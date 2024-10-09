@@ -51,7 +51,6 @@ public class PlayerDAO extends DAO {
             if (rs.next()) {
                 return true;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,7 +60,7 @@ public class PlayerDAO extends DAO {
     // Tạo tài khoản mới
     public void addPlayer(Player player) {
         try {
-            String query = "INSERT INTO player(username, password, nickName, avatar) VALUES(?,?,?,?,) ";
+            String query = "INSERT INTO player(username, password, nickName, avatar) VALUES(?,?,?,?) ";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setString(1, player.getUsername());
             stm.setString(2, player.getPassword());
@@ -113,6 +112,34 @@ public class PlayerDAO extends DAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    // Lấy tất cả người chơi
+    public ArrayList<Player> getAllPlayers() {
+        ArrayList<Player> players = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM player";
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                players.add(new Player(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getDouble(9),
+                        (rs.getInt(10) != 0),
+                        (rs.getInt(11) != 0)
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return players;
     }
 
     // Tìm người chơi theo keyword
@@ -309,7 +336,8 @@ public class PlayerDAO extends DAO {
         try {
             String query = "UPDATE player SET isPlaying = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
-            stm.setInt(1, ID);
+            stm.setInt(1, 1);
+            stm.setInt(2, ID);
             System.out.println(stm);
             stm.executeUpdate();
         } catch (SQLException ex) {
@@ -322,6 +350,7 @@ public class PlayerDAO extends DAO {
             String query = "UPDATE player SET isPlaying = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, ID);
+            stm.setInt(2, ID);
             System.out.println(stm);
             stm.executeUpdate();
         } catch (SQLException ex) {

@@ -11,7 +11,7 @@ public class DAO {
 
     public DAO() {
         final String DATABASE_NAME = "btl_ltm"; // TODO FILL YOUR DATABASE NAME
-        final String jdbcURL = "jdbc:mysql://localhost:3306/" + DATABASE_NAME + "?useSSL=false";
+        final String jdbcURL = "jdbc:mysql://localhost:3306/" + DATABASE_NAME + "?useSSL=false&allowPublicKeyRetrieval=true";
         final String JDBC_USER = "root";  // TODO FILL YOUR DATABASE USER
         final String JDBC_PASSWORD = "root"; // TODO FILL YOUR DATABASE PASSWORD
         try {

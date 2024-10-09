@@ -68,7 +68,7 @@ public class ServerThread extends Thread {
             while (!isClosed) {
                 message = in.readLine();
                 if (message == null) {
-                    break;
+                   write("Invalid");
                 }
                 String[] messageSplit = message.split(",");
                 // Xác minh đăng nhập
@@ -82,7 +82,7 @@ public class ServerThread extends Thread {
                         this.player = player1;
                         playerDAO.updateToOnline(this.player.getId());
                         Server.serverThreadBus.broadCast(clientNumber, "chat-server," + player1.getNickName() + " đang online");
-                        //Server.admin.addMessage("[" + player1.getId() + "] " + player1.getNickName() + " đang online");
+                        Server.admin.addMessage("[" + player1.getId() + "] " + player1.getNickName() + " đang online");
                     } else if (playerDAO.checkDuplicated(player1.getUsername())) {
                         write("dupplicate-login," + messageSplit[1] + "," + messageSplit[2]);
                     }
@@ -104,7 +104,7 @@ public class ServerThread extends Thread {
                 // Xử lý người chơi đăng xuất
                 if (messageSplit[0].equals("offline")) {
                     playerDAO.updateToOffline(this.player.getId());
-                    //Server.admin.addMessage("[" + player.getId() + "] " + player.getNickName() + " đã offline");
+                    Server.admin.addMessage("[" + player.getId() + "] " + player.getNickName() + " đã offline");
                     Server.serverThreadBus.broadCast(clientNumber, "chat-server," + this.player.getNickName() + " đã offline");
                     this.player = null;
                 }
@@ -113,7 +113,7 @@ public class ServerThread extends Thread {
                 if (messageSplit[0].equals("chat-server")) {
                     assert this.player != null;
                     Server.serverThreadBus.broadCast(clientNumber, messageSplit[0] + "," + this.player.getNickName() + " : " + messageSplit[1]);
-                    //Server.admin.addMessage("[" + user.getID() + "] " + user.getNickname() + " : " + messageSplit[1]);
+                    Server.admin.addMessage("[" + player.getId() + "] " + player.getNickName() + " : " + messageSplit[1]);
                 }
 
                 // Xử lý vào phòng trong chức năng tìm kiếm phòng
@@ -228,10 +228,10 @@ public class ServerThread extends Thread {
                 }
 
                 // Xử lý khi người chơi thoán phòng
-                if (messageSplit[0].equals("left-room")) {
+                if (messageSplit[0].equals("leave-room")) {
                     if (room != null) {
                         room.setPlayersToNotPlaying();
-                        room.getCompetitor(clientNumber).write("left-room,");
+                        room.getCompetitor(clientNumber).write("leave-room,");
                         room.getCompetitor(clientNumber).room = null;
                         this.room = null;
                     }
@@ -279,7 +279,7 @@ public class ServerThread extends Thread {
                 playerDAO.updateToOffline(this.player.getId());
                 playerDAO.updateToNotPlaying(this.player.getId());
                 Server.serverThreadBus.broadCast(clientNumber, "chat-server," + this.player.getNickName() + " đã offline");
-                //Server.admin.addMessage("[" + player.getId() + "] " + player.getNickName() + " đã offline");
+                Server.admin.addMessage("[" + player.getId() + "] " + player.getNickName() + " đã offline");
             }
 
             // remove thread khỏi bus
@@ -288,7 +288,7 @@ public class ServerThread extends Thread {
             if (room != null) {
                 try {
                     if (room.getCompetitor(clientNumber) != null) {
-                        room.getCompetitor(clientNumber).write("left-room,");
+                        room.getCompetitor(clientNumber).write("leave-room,");
                         room.getCompetitor(clientNumber).room = null;
                     }
                     this.room = null;

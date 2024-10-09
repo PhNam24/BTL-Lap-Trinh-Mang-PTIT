@@ -46,11 +46,11 @@ public class ProductDAO extends DAO {
     }
 
     // Xoá sản phẩm
-    public void deleteProduct(int id) {
+    public void deleteProduct(Product product) {
         try {
             String query = "DELETE FROM product WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
-            stm.setInt(1, id);
+            stm.setInt(1, product.getId());
             stm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

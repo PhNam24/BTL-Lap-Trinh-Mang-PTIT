@@ -21,12 +21,23 @@ public class Client implements Runnable {
             while (true) {
                 message = inputReader.readLine();
                 if (message == null) {
-                    break;
+                    write("Invalid");
                 }
                 System.out.println(message);
                 String command = scanner.nextLine();
-                if (command.equals("login")) {
-                    write("leaderboard");
+                String[] split = command.split(",");
+                switch (split   [0]) {
+                    case "client-verify" -> write("client-verify" + ',' + split[1] + ',' + split[2]);
+                    case "register" -> write("register" + ',' + split[1] + ',' + split[2] + ',' + split[3] + ',' + split[4]);
+                    case "offline" -> write("offline");
+                    case "go-to-room" -> write("go-to-room,100");
+                    case "create-room" -> write("create-room,");
+                    case "view-room-list" -> write("view-room-list");
+                    case "quick-room" -> write("quick-room");
+                    case "cancel-room" -> write("cancel-room");
+                    case "join-room" -> write("join-room, 100");
+                    case "leave-room" -> write("leave-room");
+                    case "guess-price" -> write("guess-price");
                 }
             }
         } catch (Exception e) {
@@ -35,7 +46,8 @@ public class Client implements Runnable {
     }
 
     public void write(String message) throws IOException {
-        outputWriter.write(message + "\r\n");
+        outputWriter.write(message);
+        outputWriter.println();
         outputWriter.flush();
     }
 

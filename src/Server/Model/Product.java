@@ -30,6 +30,8 @@ public class Product {
         this.picture = product.picture;
     }
 
+    public Product() {}
+
     public int getId() {
         return id;
     }
