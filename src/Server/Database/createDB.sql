@@ -4,7 +4,7 @@ create table if not exists Player
         primary key,
     username  varchar(255)         not null,
     password  varchar(255)         not null,
-    fullName  varchar(255)         null,
+    nickName  varchar(255)         null,
     avatar    varchar(255)         null,
     win       int        default 0 null,
     lose      int        default 0 null,
@@ -39,11 +39,11 @@ create table if not exists GameMatch
 create index productID
     on GameMatch (productID);
 
-INSERT INTO btl_ltm.Player (id, username, password, fullName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (1, 'test001', 'Test@001', 'Nguyễn Văn A', null, 2, 1, 1, 1.5, 0, 0);
-INSERT INTO btl_ltm.Player (id, username, password, fullName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (2, 'test002', 'Test@002', 'Trần Thị B', null, 1, 2, 1, 0, 0, 0);
-INSERT INTO btl_ltm.Player (id, username, password, fullName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (3, 'test003', 'Test@003', 'Lê Văn C', null, 3, 0, 0, 3, 0, 0);
-INSERT INTO btl_ltm.Player (id, username, password, fullName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (4, 'test004', 'Test@004', 'Phạm Văn D', null, 0, 3, 0, -1.5, 0, 0);
-INSERT INTO btl_ltm.Player (id, username, password, fullName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (5, 'test005', 'Test@005', 'Hoàng Thị E', null, 1, 1, 2, 0.5, 0, 0);
+INSERT INTO btl_ltm.Player (id, username, password, nickName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (1, 'test001', 'Test@001', 'Nguyễn Văn A', null, 2, 1, 1, 1.5, 0, 0);
+INSERT INTO btl_ltm.Player (id, username, password, nickName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (2, 'test002', 'Test@002', 'Trần Thị B', null, 1, 2, 1, 0, 0, 0);
+INSERT INTO btl_ltm.Player (id, username, password, nickName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (3, 'test003', 'Test@003', 'Lê Văn C', null, 3, 0, 0, 3, 0, 0);
+INSERT INTO btl_ltm.Player (id, username, password, nickName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (4, 'test004', 'Test@004', 'Phạm Văn D', null, 0, 3, 0, -1.5, 0, 0);
+INSERT INTO btl_ltm.Player (id, username, password, nickName, avatar, win, lose, draw, score, isOnline, isPlaying) VALUES (5, 'test005', 'Test@005', 'Hoàng Thị E', null, 1, 1, 2, 0.5, 0, 0);
 
 INSERT INTO btl_ltm.Product (id, name, amount, price, picture) VALUES (1, 'Nước mắm Nam Ngư', '10 chai', 35000, null);
 INSERT INTO btl_ltm.Product (id, name, amount, price, picture) VALUES (2, 'Bánh Trung Thu Kinh Đô', '5 hộp', 250000, null);
