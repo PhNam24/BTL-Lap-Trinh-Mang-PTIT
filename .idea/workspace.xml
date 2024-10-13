@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update Server GUI" />
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update smt">
+      <change afterPath="$PROJECT_DIR$/src/TestClient/BTL_LTM_UI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/InGameForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/InGameForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/LoginForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/LoginForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/MainLobbyForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/MainLobbyForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/OnlineList.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/OnlineList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/Rankings.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/Rankings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/RegisterForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/RegisterForm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +79,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT",
+    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT/src/TestClient",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -185,7 +199,7 @@
       <workItem from="1728821479558" duration="877000" />
       <workItem from="1728834411944" duration="88000" />
       <workItem from="1728834508380" duration="393000" />
-      <workItem from="1728834910709" duration="390000" />
+      <workItem from="1728834910709" duration="764000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -243,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728486687501</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update smt">
+      <option name="closed" value="true" />
+      <created>1728835356255</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728835356255</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +287,7 @@
     <MESSAGE value="update gitIgnore" />
     <MESSAGE value="update SQL script" />
     <MESSAGE value="update Server GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="update Server GUI" />
+    <MESSAGE value="update smt" />
+    <option name="LAST_COMMIT_MESSAGE" value="update smt" />
   </component>
 </project>
