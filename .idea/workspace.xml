@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update Server GUI" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PhNam24&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PhNam24/BTL-Lap-Trinh-Mang-PTIT.git&quot;,
+    &quot;accountId&quot;: &quot;db29b340-1f5f-43f4-8cab-c3ab17d1d684&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2nBpPMPrAz9NHZYsEsni50Kxjf4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Admin.executor": "Run",
+    "Application.Client.executor": "Run",
+    "Application.GuessGame.executor": "Run",
+    "Application.LoginForm.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.PlayerManagement.executor": "Run",
+    "Application.Server.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.26551723",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\.idea" />
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LoginForm">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestClient.Client" />
+      <module name="BTL-Lap-Trinh-Mang-PTIT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestClient.LoginForm" />
+      <module name="BTL-Lap-Trinh-Mang-PTIT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.Controller.Server" />
+      <module name="BTL-Lap-Trinh-Mang-PTIT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.LoginForm" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LoginForm" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="" />
+      <created>1728456298911</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728456298911</updated>
+      <workItem from="1728456300078" duration="1491000" />
+      <workItem from="1728460339072" duration="4399000" />
+      <workItem from="1728469858861" duration="15780000" />
+      <workItem from="1728525786232" duration="288000" />
+      <workItem from="1728526232344" duration="5753000" />
+      <workItem from="1728542062217" duration="47000" />
+      <workItem from="1728542275548" duration="6127000" />
+      <workItem from="1728551474386" duration="1520000" />
+      <workItem from="1728555715322" duration="193000" />
+      <workItem from="1728606062852" duration="1070000" />
+      <workItem from="1728630012396" duration="18000" />
+      <workItem from="1728630565983" duration="166000" />
+      <workItem from="1728634379814" duration="850000" />
+      <workItem from="1728718978360" duration="120000" />
+      <workItem from="1728723498959" duration="1256000" />
+      <workItem from="1728724775806" duration="1392000" />
+      <workItem from="1728775338741" duration="7922000" />
+      <workItem from="1728806266248" duration="280000" />
+      <workItem from="1728808877244" duration="3142000" />
+      <workItem from="1728820933157" duration="86000" />
+      <workItem from="1728821479558" duration="877000" />
+      <workItem from="1728834411944" duration="88000" />
+      <workItem from="1728834508380" duration="393000" />
+      <workItem from="1728834910709" duration="390000" />
+    </task>
+    <task id="LOCAL-00001" summary="update Server">
+      <option name="closed" value="true" />
+      <created>1728456888739</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728456888739</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update gitIgnore">
+      <option name="closed" value="true" />
+      <created>1728457090214</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728457090214</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update gitIgnore">
+      <option name="closed" value="true" />
+      <created>1728457182878</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728457182878</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update gitIgnore">
+      <option name="closed" value="true" />
+      <created>1728457413056</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728457413056</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update gitIgnore">
+      <option name="closed" value="true" />
+      <created>1728457463238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728457463238</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update SQL script">
+      <option name="closed" value="true" />
+      <created>1728457639423</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728457639423</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update Server GUI">
+      <option name="closed" value="true" />
+      <created>1728486687501</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728486687501</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update Server" />
+    <MESSAGE value="update gitIgnore" />
+    <MESSAGE value="update SQL script" />
+    <MESSAGE value="update Server GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Server GUI" />
+  </component>
+</project>
