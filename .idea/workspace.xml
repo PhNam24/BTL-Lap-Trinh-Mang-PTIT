@@ -4,97 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update smt">
-      <change afterPath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TestClient/View/FindRoomFrm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TestClient/View/GameNoticeFrm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/avatar/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/88634.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/mute.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/mutespeaker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/speaker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/game/swords-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/64989243-gold-silver-bronze-medals-with-neckband-ribbon-flat-medal-badge-icons-w-stars.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/add-friend.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/bronze-rank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/door_exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/friendship.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/loading1.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/loading2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/lock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/nomal-rank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/offline.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/offline.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/rank-gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/rank-sliver.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/rank.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/swords-1-lock-mini.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/swords-1-mini.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/swords-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/swords-mini.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/swords.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/ai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/blank.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/blank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/border.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/border1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/border2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/caroicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/o.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/o1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/o2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/o2_pre.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/o3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/owin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/send.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/send1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/send2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/white.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/x1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/x2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/x2_pre.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/x3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/image/xwin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sound/1click.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sound/click.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sound/win.wav" afterDir="false" />
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update test client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/ServerThreadBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/ServerThreadBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/View/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/BTL_LTM_UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/BTL_LTM_UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/InGameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/InGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/LoginForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/MainLobbyForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/MainLobbyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/OnlineList.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/OnlineList.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/OnlineList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/OnlineList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/Rankings.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/Rankings.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/Rankings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/Rankings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/RegisterForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,40 +52,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Admin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GuessGame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginForm.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainLobbyForm.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PlayerManagement.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT/src/assets&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.26551723&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Admin.executor": "Run",
+    "Application.Client.executor": "Run",
+    "Application.GuessGame.executor": "Run",
+    "Application.LoginForm.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainLobbyForm.executor": "Run",
+    "Application.PlayerManagement.executor": "Run",
+    "Application.Server.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Code/Linhtinh/CaroServer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.26551723",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets" />
@@ -288,7 +199,7 @@
       <workItem from="1729150484594" duration="2924000" />
       <workItem from="1729156190532" duration="2572000" />
       <workItem from="1729182393451" duration="4895000" />
-      <workItem from="1729210252646" duration="601000" />
+      <workItem from="1729210252646" duration="4193000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -362,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728835899348</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update test client">
+      <option name="closed" value="true" />
+      <created>1729211038729</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729211038729</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +304,7 @@
     <MESSAGE value="update SQL script" />
     <MESSAGE value="update Server GUI" />
     <MESSAGE value="update smt" />
-    <option name="LAST_COMMIT_MESSAGE" value="update smt" />
+    <MESSAGE value="update test client" />
+    <option name="LAST_COMMIT_MESSAGE" value="update test client" />
   </component>
 </project>

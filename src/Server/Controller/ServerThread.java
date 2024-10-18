@@ -111,6 +111,28 @@ public class ServerThread extends Thread {
                     this.player = null;
                 }
 
+                //Xử lý lấy danh sách bảng xếp hạng
+                if (messageSplit[0].equals("leaderboard")) {
+                    ArrayList<Player> ranks = playerDAO.getLeaderBoard();
+                    StringBuilder res = new StringBuilder("return-leaderboard,");
+                    for (Player user : ranks) {
+                        res.append(getStringFromPlayer(user)).append(",");
+                    }
+                    System.out.println(res);
+                    write(res.toString());
+                }
+
+                // Lấy danh sách người chơi online
+                if (messageSplit[0].equals("onlineList")) {
+                    ArrayList<Player> onlineList = playerDAO.getOnlineList();
+                    StringBuilder res = new StringBuilder("return-onlineList,");
+                    for (Player user : onlineList) {
+                        res.append(getStringFromPlayer(user)).append(",");
+                    }
+                    System.out.println(res);
+                    write(res.toString());
+                }
+
                 // Xử lý chat toàn server
                 if (messageSplit[0].equals("chat-server")) {
                     assert this.player != null;
@@ -145,16 +167,6 @@ public class ServerThread extends Thread {
                     }
                 }
 
-                //Xử lý lấy danh sách bảng xếp hạng
-                if (messageSplit[0].equals("leaderboard")) {
-                    ArrayList<Player> ranks = playerDAO.getLeaderBoard();
-                    StringBuilder res = new StringBuilder("return-leaderboard,");
-                    for (Player user : ranks) {
-                        res.append(getStringFromPlayer(user)).append(",");
-                    }
-                    System.out.println(res);
-                    write(res.toString());
-                }
                 //Xử lý tạo phòng
                 if (messageSplit[0].equals("create-room")) {
                     room = new Room(this);

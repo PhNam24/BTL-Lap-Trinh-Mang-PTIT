@@ -70,6 +70,12 @@ public class Player {
         this.avatar = avatar;
     }
 
+    public Player(String username, String nickName, String avatar) {
+        this.username = username;
+        this.nickName = nickName;
+        this.avatar = avatar;
+    }
+
     public Player(String username, String password) {
         this.username = username;
         this.password = password;

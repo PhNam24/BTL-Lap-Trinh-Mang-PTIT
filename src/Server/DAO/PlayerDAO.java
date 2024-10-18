@@ -302,6 +302,25 @@ public class PlayerDAO extends DAO {
         return leaderBoard;
     }
 
+    public ArrayList<Player> getOnlineList() {
+        ArrayList<Player> onlineList = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM player WHERE isOnline = 1";
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                onlineList.add(new Player(
+                        rs.getString(2),
+                        rs.getString(4),
+                        rs.getString(5)
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return onlineList;
+    }
+
 
     // Cập nhật trạng thái online
     public void updateToOnline(int ID) {
