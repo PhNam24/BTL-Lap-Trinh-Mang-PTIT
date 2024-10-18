@@ -29,6 +29,18 @@ public class Player {
         this.isPlaying = isPlaying;
     }
 
+    public Player(int id, String username, String password, String nickName, String avatar, int win, int lose, int draw, double score) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.nickName = nickName;
+        this.avatar = avatar;
+        this.win = win;
+        this.lose = lose;
+        this.draw = draw;
+        this.score = score;
+    }
+
     public Player(Player player) {
         this.id = player.id;
         this.username = player.username;

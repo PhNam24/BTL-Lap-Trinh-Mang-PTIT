@@ -1,63 +1,224 @@
 package TestClient;
 
+import Server.Model.Player;
+import TestClient.View.*;
+
+import javax.swing.*;
+import javax.swing.text.View;
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client implements Runnable {
-    private PrintWriter  outputWriter;
-    private Socket socketOfClient;
+public class Client {
+    public static Player player;
 
-    @Override
-    public void run() {
+    public static LoginForm loginForm;
+    public static MainLobbyForm mainLobbyForm;
+    public static OnlineList onlineList;
+    public static Rankings rankings;
+    public static RegisterForm registerForm;
+    public static InGameForm inGameForm;
+    public static GameNoticeFrm gameNoticeFrm;
+    public static FindRoomFrm findRoomFrm;
 
-        try {
-            socketOfClient = new Socket("127.0.0.1", 7777);
-            System.out.println("Kết nối thành công!");
-            outputWriter = new PrintWriter(new OutputStreamWriter(socketOfClient.getOutputStream()));
-            BufferedReader inputReader = new BufferedReader(new InputStreamReader(socketOfClient.getInputStream()));
-            String message;
-            Scanner scanner = new Scanner(System.in);
-            while (true) {
-                message = inputReader.readLine();
-                if (message == null) {
-                    write("Invalid");
-                }
-                System.out.println(message);
-                String command = scanner.nextLine();
-                String[] split = command.split(",");
-                switch (split   [0]) {
-                    case "client-verify" -> write("client-verify" + ',' + split[1] + ',' + split[2]);
-                    case "register" -> write("register" + ',' + split[1] + ',' + split[2] + ',' + split[3] + ',' + split[4]);
-                    case "offline" -> write("offline");
-                    case "go-to-room" -> write("go-to-room,100");
-                    case "create-room" -> write("create-room,");
-                    case "view-room-list" -> write("view-room-list");
-                    case "quick-room" -> write("quick-room");
-                    case "cancel-room" -> write("cancel-room");
-                    case "join-room" -> write("join-room, 100");
-                    case "leave-room" -> write("leave-room");
-                    case "guess-price" -> write("guess-price");
-                }
+    public static ClientHandler clientHandler;
+
+    public Client() {}
+
+    public JFrame getVisibleFrame() {
+        if(onlineList != null && onlineList.isVisible()) {
+            return onlineList;
+        }
+        if (rankings != null && rankings.isVisible()) {
+            return rankings;
+        }
+        return mainLobbyForm;
+    }
+
+    public static void openView(View viewName) {
+        if (viewName != null) {
+            switch (viewName) {
+                case LOGIN:
+                    loginForm = new LoginForm();
+                    loginForm.setVisible(true);
+                    break;
+                case REGISTER:
+                    registerForm = new RegisterForm();
+                    registerForm.setVisible(true);
+                    break;
+                case HOMEPAGE:
+                    mainLobbyForm = new MainLobbyForm();
+                    mainLobbyForm.setVisible(true);
+                    break;
+                case ROOM_LIST:
+//                    roomListFrm = new RoomListFrm();
+//                    roomListFrm.setVisible(true);
+                    break;
+                case FIND_ROOM:
+                    findRoomFrm = new FindRoomFrm();
+                    findRoomFrm.setVisible(true);
+                    break;
+                case WAITING_ROOM:
+//                    waitingRoomFrm = new WaitingRoomFrm();
+//                    waitingRoomFrm.setVisible(true);
+//                    break;
+                case CREATE_ROOM_PASSWORD:
+//                    createRoomPasswordFrm = new CreateRoomPasswordFrm();
+//                    createRoomPasswordFrm.setVisible(true);
+//                    break;
+                case RANK:
+                    rankings = new Rankings();
+                    rankings.setVisible(true);
+                    break;
+                case ROOM_NAME_FRM:
+//                    roomNameFrm = new RoomNameFrm();
+//                    roomNameFrm.setVisible(true);
+                    break;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
-    public void write(String message) throws IOException {
-        outputWriter.write(message);
-        outputWriter.println();
-        outputWriter.flush();
+//    public static void openView(View viewName, int arg1, String arg2) {
+//        if (viewName != null) {
+//            switch (viewName) {
+//                case JOIN_ROOM_PASSWORD:
+//                    joinRoomPasswordFrm = new JoinRoomPasswordFrm(arg1, arg2);
+//                    joinRoomPasswordFrm.setVisible(true);
+//                    break;
+//                case FRIEND_REQUEST:
+//                    friendRequestFrm = new FriendRequestFrm(arg1, arg2);
+//                    friendRequestFrm.setVisible(true);
+//            }
+//        }
+//    }
+
+    public static void openView(View viewName, Player competitor, int room_ID, int isStart, String competitorIP) {
+        if (viewName == View.GAME_CLIENT) {
+            //inGameForm = new InGameForm(competitor, room_ID, isStart, competitorIP);
+            inGameForm = new InGameForm();
+            inGameForm.setVisible(true);
+        }
     }
 
-    public Socket getSocketOfClient() {
-        return socketOfClient;
+    public static void openView(View viewName, Player player) {
+        if (viewName == View.COMPETITOR_INFO) {
+//            competitorInfoFrm = new CompetitorInfoFrm(user);
+//            competitorInfoFrm.setVisible(true);
+        }
+    }
+
+    public static void openView(View viewName, String arg1, String arg2) {
+        if (viewName != null) {
+            switch (viewName) {
+                case GAME_NOTICE:
+                    gameNoticeFrm = new GameNoticeFrm(arg1, arg2);
+                    gameNoticeFrm.setVisible(true);
+                    break;
+                case LOGIN:
+//                    loginForm = new LoginForm(arg1, arg2);
+                    loginForm = new LoginForm();
+                    loginForm.setVisible(true);
+            }
+        }
+    }
+
+    public static void closeView(View viewName) {
+        if (viewName != null) {
+            switch (viewName) {
+                case LOGIN:
+                    loginForm.dispose();
+                    break;
+                case REGISTER:
+                    registerForm.dispose();
+                    break;
+                case HOMEPAGE:
+                    mainLobbyForm.dispose();
+                    break;
+                case ROOM_LIST:
+                    //roomListFrm.dispose();
+                    break;
+                case FIND_ROOM:
+                    findRoomFrm.stopAllThread();
+                    findRoomFrm.dispose();
+                    break;
+                case WAITING_ROOM:
+//                    waitingRoomFrm.dispose();
+                    break;
+                case GAME_CLIENT:
+//                    inGameForm.stopAllThread();
+                    inGameForm.dispose();
+                    break;
+                case CREATE_ROOM_PASSWORD:
+//                    createRoomPasswordFrm.dispose();
+                    break;
+                case JOIN_ROOM_PASSWORD:
+//                    joinRoomPasswordFrm.dispose();
+                    break;
+                case COMPETITOR_INFO:
+//                    competitorInfoFrm.dispose();
+                    break;
+                case RANK:
+                    rankings.dispose();
+                    break;
+                case GAME_NOTICE:
+                    gameNoticeFrm.dispose();
+                    break;
+                case ROOM_NAME_FRM:
+//                    roomNameFrm.dispose();
+                    break;
+            }
+
+        }
+    }
+
+    public static void closeAllViews() {
+        if (loginForm != null) {
+            loginForm.dispose();
+        }
+        if (registerForm != null) {
+            registerForm.dispose();
+        }
+        if (mainLobbyForm != null) {
+            mainLobbyForm.dispose();
+        }
+        if (onlineList != null) {
+            onlineList.dispose();
+        }
+        if (rankings != null) {
+            rankings.dispose();
+        }
+        if (inGameForm != null) {
+            inGameForm.dispose();
+        }
+        if (gameNoticeFrm != null) {
+            gameNoticeFrm.dispose();
+        }
     }
 
     public static void main(String[] args) {
-        Client client = new Client();
-        Thread thread = new Thread(client);
-        thread.start();
+        new Client().initView();
+    }
+
+    public void initView() {
+        loginForm = new LoginForm();
+        loginForm.setVisible(true);
+        clientHandler = new ClientHandler();
+        clientHandler.start();
+    }
+
+    public enum View {
+        LOGIN,
+        REGISTER,
+        HOMEPAGE,
+        ROOM_LIST,
+        FIND_ROOM,
+        WAITING_ROOM,
+        GAME_CLIENT,
+        CREATE_ROOM_PASSWORD,
+        JOIN_ROOM_PASSWORD,
+        COMPETITOR_INFO,
+        RANK,
+        GAME_NOTICE,
+        ROOM_NAME_FRM
     }
 }

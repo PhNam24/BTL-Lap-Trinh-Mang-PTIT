@@ -1,7 +1,7 @@
 package Server.View;
 
 import Server.Controller.Room;
-import Server.Controller.Server;
+import Server.Server;
 import Server.Controller.ServerThread;
 
 import javax.swing.*;

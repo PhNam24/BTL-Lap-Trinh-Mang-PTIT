@@ -1,5 +1,7 @@
-package Server.Controller;
+package Server;
 
+import Server.Controller.ServerThread;
+import Server.Controller.ServerThreadBUS;
 import Server.View.Admin;
 
 import java.io.IOException;

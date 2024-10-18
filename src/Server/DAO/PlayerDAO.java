@@ -293,9 +293,7 @@ public class PlayerDAO extends DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getDouble(9),
-                        (rs.getInt(10) != 0),
-                        (rs.getInt(11) != 0)
+                        rs.getDouble(9)
                 ));
             }
         } catch (SQLException e) {

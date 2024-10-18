@@ -3,6 +3,7 @@ package Server.Controller;
 import Server.DAO.PlayerDAO;
 import Server.Model.GameMatch;
 import Server.Model.Player;
+import Server.Server;
 
 import java.io.*;
 import java.net.Socket;
@@ -37,7 +38,8 @@ public class ServerThread extends Thread {
     }
 
     public void write(String message) throws IOException {
-        out.write(message + "\n");
+        out.write(message);
+        out.println();
         out.flush();
     }
 
@@ -186,7 +188,7 @@ public class ServerThread extends Thread {
                 if (messageSplit[0].equals("quick-room")) {
                     boolean isFinded = false;
                     for (ServerThread serverThread : Server.serverThreadBus.getListServerThreads()) {
-                        if (serverThread.room != null && serverThread.room.getNumberOfPlayer() == 1 && serverThread.room.getPassword().equals(" ")) {
+                        if (serverThread.room != null && serverThread.room.getNumberOfPlayer() == 1 && serverThread.room.getPassword().equals("")) {
                             serverThread.room.setPlayer2(this);
                             this.room = serverThread.room;
                             System.out.println("Đã vào phòng " + room.getId());

@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package TestClient;
+package TestClient.View;
+
+import TestClient.Client;
 
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 /**
  *
@@ -154,7 +157,11 @@ public class MainLobbyForm extends javax.swing.JFrame {
         btnExit.setText("Thoát game");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+                try {
+                    btnExitActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -191,6 +198,11 @@ public class MainLobbyForm extends javax.swing.JFrame {
         );
 
         jButton1.setText("Gửi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -265,92 +277,24 @@ public class MainLobbyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOnlineListActionPerformed
 
     private void btnFindRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindRoomActionPerformed
-        // TODO add your handling code here:
-        javax.swing.JTextField roomIDField = new javax.swing.JTextField();
 
-        // Tạo một hộp thoại với JTextField
-        Object[] message = {
-            "Nhập mã phòng:", roomIDField
-        };
-
-        // Hiện thị hộp thoại với chỉ một nút OK
-        int option = JOptionPane.showConfirmDialog(this, message, "Tìm phòng", JOptionPane.OK_CANCEL_OPTION);
-
-        if (option == JOptionPane.OK_OPTION) {
-            String roomID = roomIDField.getText().trim();
-            if (!roomID.isEmpty()) {
-                // Tạo một JFrame hiển thị thông báo đang tìm phòng
-                javax.swing.JFrame loadingFrame = new javax.swing.JFrame("Đang tìm phòng...");
-                javax.swing.JLabel loadingLabel = new javax.swing.JLabel("Đang tìm phòng, vui lòng đợi...", javax.swing.SwingConstants.CENTER);
-                loadingFrame.add(loadingLabel);
-                loadingFrame.setSize(300, 100);
-                loadingFrame.setLocationRelativeTo(null); // Hiển thị ở giữa màn hình
-                loadingFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); // Không cho phép đóng cửa sổ tạm thời
-                loadingFrame.setVisible(true); // Hiển thị giao diện đang tìm phòng
-
-                // Tạo một luồng để chờ 3 giây trước khi chuyển sang InGameForm
-                new java.util.Timer().schedule(
-                    new java.util.TimerTask() {
-                        @Override
-                        public void run() {
-                            // Sau 3 giây, đóng giao diện tạm thời và hiển thị InGameForm
-                            loadingFrame.dispose(); // Đóng cửa sổ "Đang tìm phòng"
-                            JOptionPane.showMessageDialog(null, "Đã tìm thấy phòng"); // Thông báo tìm thấy phòng
-
-                            // Hiển thị InGameForm
-                            InGameForm ingameForm = new InGameForm();
-                            ingameForm.setVisible(true);
-
-                            // Ẩn MainLobbyForm (nếu bạn muốn ẩn form hiện tại)
-                            dispose();
-                        }
-                    }, 
-                    3000 // Chờ 3 giây (3000 milliseconds)
-                );
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Mã phòng không hợp lệ!");
-            }
-        }
     }//GEN-LAST:event_btnFindRoomActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        Client.clientHandler.write("offline");
+        Client.closeView(Client.View.HOMEPAGE);
+        Client.openView(Client.View.LOGIN);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnRandomMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRandomMatchActionPerformed
-        // TODO add your handling code here:
-        // Tạo một JFrame hiển thị thông báo đang tìm phòng ngẫu nhiên
-        javax.swing.JFrame loadingFrame = new javax.swing.JFrame("Đang tìm phòng ngẫu nhiên...");
-        javax.swing.JLabel loadingLabel = new javax.swing.JLabel("Đang tìm phòng ngẫu nhiên, vui lòng đợi...", javax.swing.SwingConstants.CENTER);
-        loadingFrame.add(loadingLabel);
-        loadingFrame.setSize(300, 100);
-        loadingFrame.setLocationRelativeTo(null); // Hiển thị ở giữa màn hình
-        loadingFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); // Không cho phép đóng cửa sổ tạm thời
-        loadingFrame.setVisible(true); // Hiển thị giao diện đang tìm phòng
-
-        // Tạo một luồng để chờ 3 giây trước khi chuyển sang InGameForm
-        new java.util.Timer().schedule(
-            new java.util.TimerTask() {
-                @Override
-                public void run() {
-                    // Sau 3 giây, đóng giao diện tạm thời và hiển thị InGameForm
-                    loadingFrame.dispose(); // Đóng cửa sổ "Đang tìm phòng ngẫu nhiên"
-                    JOptionPane.showMessageDialog(null, "Đã tìm thấy phòng ngẫu nhiên"); // Thông báo tìm thấy phòng ngẫu nhiên
-
-                    // Hiển thị InGameForm
-                    InGameForm ingameForm = new InGameForm();
-                    ingameForm.setVisible(true);
-
-                    // Ẩn MainLobbyForm (nếu bạn muốn ẩn form hiện tại)
-                    dispose();
-                }
-            }, 
-            3000 // Chờ 3 giây (3000 milliseconds)
-        );
+        Client.closeView(Client.View.HOMEPAGE);
+        Client.openView(Client.View.FIND_ROOM);
     }//GEN-LAST:event_btnRandomMatchActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        sendMessage();
+    }
     /**
      * @param args the command line arguments
      */
@@ -385,6 +329,30 @@ public class MainLobbyForm extends javax.swing.JFrame {
             }
         });
     }
+
+    private void sendMessage() {
+        try {
+            if (jTextField22.getText().isEmpty()) {
+                throw new Exception("Vui lòng nhập nội dung tin nhắn");
+            }
+            String temp = jTextArea1.getText();
+            temp += "Tôi: " + jTextField22.getText() + "\n";
+            jTextArea1.setText(temp);
+            Client.clientHandler.write("chat-server," + jTextField22.getText());
+            jTextField22.setText("");
+            jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+    }
+
+    public void addMessage(String message) {
+        String temp = jTextArea1.getText();
+        temp += message + "\n";
+        jTextArea1.setText(temp);
+        jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateNewRoom;

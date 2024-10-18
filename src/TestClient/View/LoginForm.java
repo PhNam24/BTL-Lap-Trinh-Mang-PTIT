@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package TestClient;
+package TestClient.View;
 
 import javax.swing.JOptionPane;
+import TestClient.Client;
+
+import java.io.IOException;
 
 /**
  *
@@ -48,10 +51,14 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
-        btnLogin.setText("Xác nhận");
+        btnLogin.setText("Đăng nhập");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                try {
+                    btnLoginActionPerformed(evt);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -79,9 +86,9 @@ public class LoginForm extends javax.swing.JFrame {
                             .addComponent(txtUsername)
                             .addComponent(txtPassword)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                        .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
@@ -113,42 +120,29 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         String username = txtUsername.getText();
+        if (username.isEmpty()) {
+            throw new Exception("Vui lòng nhập tài khoản!");
+        }
         String password = new String(txtPassword.getPassword());
-        StringBuilder sb = new StringBuilder();
-        
-        if(username.equals("")){
-            sb.append("Username is empty! \n");
-            
+        if (password.isEmpty()) {
+            throw new Exception("Vui lòng nhập mật khẩu!");
         }
-        if(password.equals("")){
-            sb.append("Password is empty! \n");
-        }
-        
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(this, sb.toString(), "Invalidation", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if(username.equals("admin") && password.equals("123456")){
-            JOptionPane.showMessageDialog(this, "Login successfully!");
-            // Hiển thị MainLobbyForm
-            MainLobbyForm mainLobby = new MainLobbyForm();
-            mainLobby.setVisible(true);
-            this.dispose(); // Đóng LoginForm
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Wrong information!", "Invalidation", JOptionPane.ERROR_MESSAGE);
-        }
+        Client.closeAllViews();
+        Client.openView(Client.View.GAME_NOTICE, "Đăng nhập", "Đang xác thực thông tin đăng nhập");
+        Client.clientHandler.write("client-verify," + username + "," + password);
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        RegisterForm registerForm = new RegisterForm();
-        registerForm.setVisible(true);
-        this.dispose(); // Đóng LoginForm
+        Client.closeView(Client.View.LOGIN);
+        Client.openView(Client.View.REGISTER);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
