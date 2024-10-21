@@ -3,6 +3,7 @@ package Server.Controller;
 import Server.DAO.PlayerDAO;
 import Server.Model.GameMatch;
 import Server.Model.Player;
+import Server.Model.Product;
 import Server.Server;
 
 import java.io.*;
@@ -200,7 +201,7 @@ public class ServerThread extends Thread {
                 if (messageSplit[0].equals("quick-room")) {
                     boolean isFinded = false;
                     for (ServerThread serverThread : Server.serverThreadBus.getListServerThreads()) {
-                        if (serverThread.room != null && serverThread.room.getNumberOfPlayer() == 1 && serverThread.room.getPassword().equals("")) {
+                        if (serverThread.room != null && serverThread.room.getNumberOfPlayer() == 1 && serverThread.room.getPassword().equals(" ")) {
                             serverThread.room.setPlayer2(this);
                             this.room = serverThread.room;
                             System.out.println("Đã vào phòng " + room.getId());
@@ -251,39 +252,71 @@ public class ServerThread extends Thread {
                     }
                 }
 
+                // Xử lý khi bắt đầu ván chơi
+                if (messageSplit[0].equals("new-game")) {
+                    assert room != null;
+                    room.setProduct();
+                    Product product = room.getProduct();
+                    write("game-start," + product.getName() + "," + product.getAmount() + ',' + product.getPrice() + ',' + product.getPicture() + ',');
+                }
+
                 // Xử lý khi người chơi đoán giá
                 if (messageSplit[0].equals("guess-price")) {
                     assert room != null;
-                    room.getCompetitor(clientNumber).write(message);
+                    room.setPlayersPrice(Integer.parseInt(messageSplit[1]), Double.parseDouble(messageSplit[2]));
                 }
 
-                // Xử lý khi người chơi thắng
-                if (messageSplit[0].equals("win")) {
-                    playerDAO.addWin(this.player.getId());
-                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1] + "," + messageSplit[2]);
-                    room.saveGameMatch(new GameMatch(this.player.getId(), room.getCompetitorID(clientNumber), this.player.getId(), room.getProduct().getId()));
-                    room.broadCast("new-game,");
-                }
-
-                // Xử lý khi người chơi thua
-                if (messageSplit[0].equals("lose")) {
-                    playerDAO.addLose(this.player.getId());
-                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1]);
-                    write("new-game");
-                }
-
-                // Xử lý khi người chơi hoà
-                if (messageSplit[0].equals("draw")) {
-                    playerDAO.addDraw(this.player.getId());
-                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1]);
+                // Xử lý khi cả 2 đều đoán xong
+                if (messageSplit[0].equals("result")) {
+                    assert room != null;
+                    int winner = room.getResult();
+                    if (winner == this.player.getId()) {
+                        playerDAO.addWin(this.player.getId());
+                        write("win,");
+                    }
+                    else if (winner != -1) {
+                        playerDAO.addLose(this.player.getId());
+                        write("lose,");
+                    }
+                    else {
+                        playerDAO.addDraw(this.player.getId());
+                        write("draw,");
+                    }
                     synchronized (room) {
                         if (!room.isDrawHandle()) {
-                            room.saveGameMatch(new GameMatch(this.player.getId(), room.getCompetitorID(clientNumber), -1, room.getProduct().getId()));
+                            room.saveGameMatch(new GameMatch(this.player.getId(), room.getCompetitorID(clientNumber), winner, room.getProduct().getId()));
                             room.setDrawHandle(true);
                         }
                     }
-                    write("new-game");
                 }
+
+                // Xử lý khi người chơi thắng
+//                if (messageSplit[0].equals("win")) {
+//                    playerDAO.addWin(this.player.getId());
+//                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1] + "," + messageSplit[2]);
+//                    room.saveGameMatch(new GameMatch(this.player.getId(), room.getCompetitorID(clientNumber), this.player.getId(), room.getProduct().getId()));
+//                    room.broadCast("new-game,");
+//                }
+//
+//                // Xử lý khi người chơi thua
+//                if (messageSplit[0].equals("lose")) {
+//                    playerDAO.addLose(this.player.getId());
+//                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1]);
+//                    write("new-game");
+//                }
+//
+//                // Xử lý khi người chơi hoà
+//                if (messageSplit[0].equals("draw")) {
+//                    playerDAO.addDraw(this.player.getId());
+//                    room.getCompetitor(clientNumber).write("caro," + messageSplit[1]);
+//                    synchronized (room) {
+//                        if (!room.isDrawHandle()) {
+//                            room.saveGameMatch(new GameMatch(this.player.getId(), room.getCompetitorID(clientNumber), -1, room.getProduct().getId()));
+//                            room.setDrawHandle(true);
+//                        }
+//                    }
+//                    write("new-game");
+//                }
             }
         } catch (IOException e) {
             // Thay đổi giá trị cờ để thoát luồng

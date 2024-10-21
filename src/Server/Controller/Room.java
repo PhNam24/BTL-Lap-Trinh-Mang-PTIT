@@ -13,6 +13,8 @@ public class Room {
     private final int id;
     private final ServerThread player1;
     private ServerThread player2;
+    private double p1Price;
+    private double p2Price;
     private Product product;
     private String password;
     private boolean isDrawHandle = false;
@@ -25,7 +27,7 @@ public class Room {
         this.id = Server.ROOM_ID++;
         this.player1 = player1;
         this.player2 = null;
-        this.password = "";
+        this.password = " ";
         playerDAO = new PlayerDAO();
         productDAO = new ProductDAO();
         gameMatchDAO = new GameMatchDAO();
@@ -70,6 +72,28 @@ public class Room {
         }
     }
 
+    public void setPlayersPrice(int id, double price) {
+        if(player1.getPlayer().getId() == id) {
+            p1Price = price;
+        }
+        else {
+            p2Price = price;
+        }
+    }
+
+    public int getResult() {
+        if ((p1Price == p2Price) || (p1Price > product.getPrice() && p2Price > product.getPrice())) {
+            return -1;
+        }
+        if (p1Price <= product.getPrice() && p2Price > product.getPrice()) {
+            return player1.getPlayer().getId();
+        }
+        if (p2Price <= product.getPrice() && p1Price > product.getPrice()) {
+            return player2.getPlayer().getId();
+        }
+        return p1Price > p2Price ? player1.getPlayer().getId() : player2.getPlayer().getId();
+    }
+
     public void saveGameMatch(GameMatch gameMatch) {
         gameMatchDAO.addGameMatch(gameMatch);
     }
@@ -105,7 +129,7 @@ public class Room {
     }
 
     public void setProduct() {
-        this.product = productDAO.getRamdomProduct();
+        this.product = productDAO.getRandomProduct();
     }
 
     public void setDrawHandle(boolean drawHandle) {

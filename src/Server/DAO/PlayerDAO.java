@@ -302,6 +302,7 @@ public class PlayerDAO extends DAO {
         return leaderBoard;
     }
 
+    // Lấy danh sách người chơi online
     public ArrayList<Player> getOnlineList() {
         ArrayList<Player> onlineList = new ArrayList<>();
         try {

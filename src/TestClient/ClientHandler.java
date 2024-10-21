@@ -118,56 +118,68 @@ public class ClientHandler extends Thread {
                     JOptionPane.showMessageDialog(Client.mainLobbyForm, "Mật khẩu phòng sai");
                 }
 
-                //Xử lý lấy danh sách phòng
-//                if (messageSplit[0].equals("room-list")) {
-//                    ArrayList<String> rooms = new ArrayList<>();
-//                    ArrayList<String> passwords = new ArrayList<>();
-//                    for (int i = 1; i < messageSplit.length; i = i + 2) {
-//                        rooms.add("Phòng " + messageSplit[i]);
-//                        passwords.add(messageSplit[i + 1]);
-//                    }
-//                    Client.roomListFrm.updateRoomList(rooms, passwords);
-//                }
-//                if (messageSplit[0].equals("go-to-room")) {
-//                    System.out.println("Vào phòng");
-//                    int roomID = Integer.parseInt(messageSplit[1]);
-//                    String competitorIP = messageSplit[2];
-//                    int isStart = Integer.parseInt(messageSplit[3]);
-//
-//                    Player competitor = getPlayerFromString(4, messageSplit);
-//                    if (Client.findRoomFrm != null) {
-//                        Client.findRoomFrm.showFoundRoom();
-//                        try {
-//                            Thread.sleep(3000);
-//                        } catch (InterruptedException ex) {
-//                            JOptionPane.showMessageDialog(Client.findRoomFrm, "Lỗi khi sleep thread");
-//                        }
-//                    } else if (Client.waitingRoomFrm != null) {
-//                        Client.waitingRoomFrm.showFoundCompetitor();
-//                        try {
-//                            Thread.sleep(3000);
-//                        } catch (InterruptedException ex) {
-//                            JOptionPane.showMessageDialog(Client.waitingRoomFrm, "Lỗi khi sleep thread");
-//                        }
-//                    }
-//                    Client.closeAllViews();
-//                    System.out.println("Đã vào phòng: " + roomID);
-//                    //Xử lý vào phòng
-//                    Client.openView(Client.View.GAME_CLIENT
-//                            , competitor
-//                            , roomID
-//                            , isStart
-//                            , competitorIP);
-//                    Client.inGameForm.newgame();
-//                }
-//                //Tạo phòng và server trả về tên phòng
-//                if (messageSplit[0].equals("your-created-room")) {
-//                    Client.closeAllViews();
-//                    Client.openView(Client.View.WAITING_ROOM);
-//                    Client.waitingRoomFrm.setRoomName(messageSplit[1]);
-//                    if (messageSplit.length == 3)
-//                        Client.waitingRoomFrm.setRoomPassword("Mật khẩu phòng: " + messageSplit[2]);
-//                }
+                // Xử lý lấy danh sách phòng
+                if (messageSplit[0].equals("room-list")) {
+                    ArrayList<String> rooms = new ArrayList<>();
+                    ArrayList<String> passwords = new ArrayList<>();
+                    for (int i = 1; i < messageSplit.length; i = i + 2) {
+                        rooms.add("Phòng " + messageSplit[i]);
+                        passwords.add(messageSplit[i + 1]);
+                    }
+                    Client.roomListFrm.updateRoomList(rooms, passwords);
+                }
+
+                // Xử lý vào phòng chơi
+                if (messageSplit[0].equals("go-to-room")) {
+                    System.out.println("Vào phòng");
+                    int roomID = Integer.parseInt(messageSplit[1]);
+                    String competitorIP = messageSplit[2];
+                    int isStart = Integer.parseInt(messageSplit[3]);
+
+                    Player competitor = getPlayerFromString(4, messageSplit);
+                    if (Client.findRoomFrm != null) {
+                        Client.findRoomFrm.showFoundRoom();
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                            JOptionPane.showMessageDialog(Client.findRoomFrm, "Lỗi khi sleep thread");
+                        }
+                    } else if (Client.waitingRoomFrm != null) {
+                        Client.waitingRoomFrm.showFoundCompetitor();
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                            JOptionPane.showMessageDialog(Client.waitingRoomFrm, "Lỗi khi sleep thread");
+                        }
+                    }
+                    Client.closeAllViews();
+                    System.out.println("Đã vào phòng: " + roomID);
+                    //Xử lý vào phòng
+                    Client.openView(Client.View.GAME_CLIENT
+                            , competitor
+                            , roomID
+                            , isStart
+                            , competitorIP);
+                    //Client.inGameForm.newgame();
+                }
+
+                //Tạo phòng và server trả về tên phòng
+                if (messageSplit[0].equals("your-created-room")) {
+                    Client.closeAllViews();
+                    Client.openView(Client.View.WAITING_ROOM);
+                    Client.waitingRoomFrm.setRoomName(messageSplit[1]);
+                    if (messageSplit.length == 3)
+                        Client.waitingRoomFrm.setRoomPassword("Mật khẩu phòng: " + messageSplit[2]);
+                }
+
+                if (messageSplit[0].equals("left-room")) {
+                    //Client.inGameForm.stopTimer();
+                    Client.closeAllViews();
+                    Client.openView(Client.View.GAME_NOTICE, "Đối thủ đã thoát khỏi phòng", "Đang trở về trang chủ");
+                    Thread.sleep(3000);
+                    Client.closeAllViews();
+                    Client.openView(Client.View.HOMEPAGE);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

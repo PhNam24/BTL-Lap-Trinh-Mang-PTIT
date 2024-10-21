@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update test client">
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update onlineList">
+      <change afterPath="$PROJECT_DIR$/src/TestClient/View/JoinRoomPasswordFrm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/View/RoomListFrm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestClient/View/WaitingRoomFrm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Controller/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/DAO/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,40 +62,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Admin.executor": "Run",
-    "Application.Client.executor": "Run",
-    "Application.GuessGame.executor": "Run",
-    "Application.LoginForm.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainLobbyForm.executor": "Run",
-    "Application.PlayerManagement.executor": "Run",
-    "Application.Server.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Code/Linhtinh/CaroServer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.26551723",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Admin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GuessGame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginForm.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainLobbyForm.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PlayerManagement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.WaitingRoomFrm.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Linhtinh/CaroServer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.26551723&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets" />
@@ -98,13 +109,26 @@
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.InGameForm">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestClient.Client" />
       <module name="BTL-Lap-Trinh-Mang-PTIT" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="TestClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InGameForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestClient.View.InGameForm" />
+      <module name="BTL-Lap-Trinh-Mang-PTIT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestClient.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,15 +162,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WaitingRoomFrm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestClient.View.WaitingRoomFrm" />
+      <module name="BTL-Lap-Trinh-Mang-PTIT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestClient.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Application.InGameForm" />
+      <item itemvalue="Application.WaitingRoomFrm" />
       <item itemvalue="Application.MainLobbyForm" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InGameForm" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.WaitingRoomFrm" />
         <item itemvalue="Application.MainLobbyForm" />
       </list>
     </recent_temporary>
@@ -199,7 +240,11 @@
       <workItem from="1729150484594" duration="2924000" />
       <workItem from="1729156190532" duration="2572000" />
       <workItem from="1729182393451" duration="4895000" />
-      <workItem from="1729210252646" duration="4193000" />
+      <workItem from="1729210252646" duration="7061000" />
+      <workItem from="1729235394885" duration="3325000" />
+      <workItem from="1729251646475" duration="2688000" />
+      <workItem from="1729447512613" duration="3568000" />
+      <workItem from="1729473701062" duration="4941000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -281,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729211038729</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update onlineList">
+      <option name="closed" value="true" />
+      <created>1729221301694</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729221301694</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +358,7 @@
     <MESSAGE value="update Server GUI" />
     <MESSAGE value="update smt" />
     <MESSAGE value="update test client" />
-    <option name="LAST_COMMIT_MESSAGE" value="update test client" />
+    <MESSAGE value="update onlineList" />
+    <option name="LAST_COMMIT_MESSAGE" value="update onlineList" />
   </component>
 </project>

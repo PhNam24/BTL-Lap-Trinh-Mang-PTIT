@@ -20,6 +20,9 @@ public class Client {
     public static InGameForm inGameForm;
     public static GameNoticeFrm gameNoticeFrm;
     public static FindRoomFrm findRoomFrm;
+    public static RoomListFrm roomListFrm;
+    public static JoinRoomPasswordFrm joinRoomPasswordFrm;
+    public static WaitingRoomFrm waitingRoomFrm;
 
     public static ClientHandler clientHandler;
 
@@ -51,8 +54,8 @@ public class Client {
                     mainLobbyForm.setVisible(true);
                     break;
                 case ROOM_LIST:
-//                    roomListFrm = new RoomListFrm();
-//                    roomListFrm.setVisible(true);
+                    roomListFrm = new RoomListFrm();
+                    roomListFrm.setVisible(true);
                     break;
                 case FIND_ROOM:
                     findRoomFrm = new FindRoomFrm();
@@ -78,19 +81,14 @@ public class Client {
         }
     }
 
-//    public static void openView(View viewName, int arg1, String arg2) {
-//        if (viewName != null) {
-//            switch (viewName) {
-//                case JOIN_ROOM_PASSWORD:
-//                    joinRoomPasswordFrm = new JoinRoomPasswordFrm(arg1, arg2);
-//                    joinRoomPasswordFrm.setVisible(true);
-//                    break;
-//                case FRIEND_REQUEST:
-//                    friendRequestFrm = new FriendRequestFrm(arg1, arg2);
-//                    friendRequestFrm.setVisible(true);
-//            }
-//        }
-//    }
+    public static void openView(View viewName, int arg1, String arg2) {
+        if (viewName != null) {
+            if (viewName == View.JOIN_ROOM_PASSWORD) {
+                joinRoomPasswordFrm = new JoinRoomPasswordFrm(arg1, arg2);
+                joinRoomPasswordFrm.setVisible(true);
+            }
+        }
+    }
 
     public static void openView(View viewName, Player competitor, int room_ID, int isStart, String competitorIP) {
         if (viewName == View.GAME_CLIENT) {
@@ -135,14 +133,14 @@ public class Client {
                     mainLobbyForm.dispose();
                     break;
                 case ROOM_LIST:
-                    //roomListFrm.dispose();
+                    roomListFrm.dispose();
                     break;
                 case FIND_ROOM:
                     findRoomFrm.stopAllThread();
                     findRoomFrm.dispose();
                     break;
                 case WAITING_ROOM:
-//                    waitingRoomFrm.dispose();
+                    waitingRoomFrm.dispose();
                     break;
                 case GAME_CLIENT:
 //                    inGameForm.stopAllThread();
@@ -152,7 +150,7 @@ public class Client {
 //                    createRoomPasswordFrm.dispose();
                     break;
                 case JOIN_ROOM_PASSWORD:
-//                    joinRoomPasswordFrm.dispose();
+                    joinRoomPasswordFrm.dispose();
                     break;
                 case COMPETITOR_INFO:
 //                    competitorInfoFrm.dispose();
@@ -193,6 +191,22 @@ public class Client {
         if (gameNoticeFrm != null) {
             gameNoticeFrm.dispose();
         }
+
+        if (findRoomFrm != null) {
+            findRoomFrm.dispose();
+        };
+
+        if (roomListFrm != null) {
+            roomListFrm.dispose();
+        };
+
+        if (joinRoomPasswordFrm != null) {
+            joinRoomPasswordFrm.dispose();
+        };
+
+        if (waitingRoomFrm != null) {
+            waitingRoomFrm.dispose();
+        };
     }
 
     public static void main(String[] args) {

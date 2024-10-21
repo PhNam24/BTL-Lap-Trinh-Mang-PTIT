@@ -277,7 +277,13 @@ public class MainLobbyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOnlineListActionPerformed
 
     private void btnFindRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindRoomActionPerformed
-
+        try {
+            Client.closeView(Client.View.HOMEPAGE);
+            Client.openView(Client.View.ROOM_LIST);
+            Client.clientHandler.write("view-room-list,");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
     }//GEN-LAST:event_btnFindRoomActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnExitActionPerformed

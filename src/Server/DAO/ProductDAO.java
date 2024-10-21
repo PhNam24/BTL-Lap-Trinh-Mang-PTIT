@@ -74,7 +74,7 @@ public class ProductDAO extends DAO {
     }
 
     // lấy sản phẩm ngẫu nhiên
-    public Product getRamdomProduct() {
+    public Product getRandomProduct() {
         ArrayList<Product> products = getAllProducts();
         return products.get(new Random().nextInt(products.size()));
     }
