@@ -24,6 +24,15 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    public LoginForm(String taiKhoan, String matKhau) {
+        initComponents();
+        txtPassword.setText(matKhau);
+        txtUsername.setText(taiKhoan);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,7 +60,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
-        btnLogin.setText("Đăng nhập");
+        btnLogin.setText("Xác nhận");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -65,7 +74,11 @@ public class LoginForm extends javax.swing.JFrame {
         btnRegister.setText("Đăng kí");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                try {
+                    btnRegisterActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -78,17 +91,17 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername)
-                            .addComponent(txtPassword)))
+                            .addComponent(txtPassword)
+                            .addComponent(txtUsername)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
@@ -110,7 +123,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister)
                     .addComponent(btnLogin))
@@ -124,10 +137,12 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = txtUsername.getText();
         if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập tài khoản!");
             throw new Exception("Vui lòng nhập tài khoản!");
         }
         String password = new String(txtPassword.getPassword());
         if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập mật khẩu!");
             throw new Exception("Vui lòng nhập mật khẩu!");
         }
         Client.closeAllViews();
@@ -139,9 +154,9 @@ public class LoginForm extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, message);
     }
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        Client.closeView(Client.View.LOGIN);
+        Client.closeAllViews();
         Client.openView(Client.View.REGISTER);
     }//GEN-LAST:event_btnRegisterActionPerformed
 

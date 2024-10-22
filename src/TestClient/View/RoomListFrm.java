@@ -31,7 +31,7 @@ public class RoomListFrm extends javax.swing.JFrame {
     public RoomListFrm() {
         initComponents();
         this.setTitle("Caro Game by Ju");
-        this.setIconImage(new ImageIcon("assets/image/caroicon.png").getImage());
+        this.setIconImage(new ImageIcon("src/assets/image/caroicon.png").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -63,9 +63,9 @@ public class RoomListFrm extends javax.swing.JFrame {
         ImageIcon imageIcon;
         for (int i = 0; i < listRoom.size(); i++) {
             if (listPassword.get(i).equals(" "))
-                imageIcon = new ImageIcon("assets/icon/swords-1-mini.png");
+                imageIcon = new ImageIcon("src/assets/icon/swords-1-mini.png");
             else
-                imageIcon = new ImageIcon("assets/icon/swords-1-lock-mini.png");
+                imageIcon = new ImageIcon("src/assets/icon/swords-1-lock-mini.png");
             defaultTableModel.addRow(new Object[]{
                     listRoom.get(i),
                     imageIcon
@@ -114,7 +114,11 @@ public class RoomListFrm extends javax.swing.JFrame {
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -175,7 +179,7 @@ public class RoomListFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton1ActionPerformed
         Client.closeView(Client.View.ROOM_LIST);
         Client.openView(Client.View.HOMEPAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -186,6 +190,7 @@ public class RoomListFrm extends javax.swing.JFrame {
             try {
                 isPlayThread = false;
                 int index = roomTextArea.getSelectedRow();
+                System.out.println(listRoom);
                 int room = Integer.parseInt(listRoom.get(index).split(" ")[1]);
                 String password = listPassword.get(index);
                 if (password.equals(" ")) {
@@ -193,9 +198,9 @@ public class RoomListFrm extends javax.swing.JFrame {
                     Client.closeView(Client.View.ROOM_LIST);
                 } else {
                     Client.closeView(Client.View.ROOM_LIST);
-                    Client.openView(Client.View.JOIN_ROOM_PASSWORD, String.valueOf(room), password);
+                    Client.openView(Client.View.JOIN_ROOM_PASSWORD, room, password);
                 }
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
         }

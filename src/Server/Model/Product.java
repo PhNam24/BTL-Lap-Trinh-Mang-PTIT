@@ -30,6 +30,16 @@ public class Product {
         this.picture = product.picture;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", amount='" + amount + '\'' +
+                ", price=" + price +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
+
     public Product() {}
 
     public int getId() {

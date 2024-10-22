@@ -190,7 +190,7 @@ public class PlayerDAO extends DAO {
     // Xử lý data khi chiến thắng
     public void addWin(int id) {
         try {
-            String query = "UPDATE player SET win = ?, score = ? WHERE id = ?)";
+            String query = "UPDATE player SET win = ?, score = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, getWin(id) + 1);
             stm.setDouble(2, getScore(id) + 1);
@@ -220,7 +220,7 @@ public class PlayerDAO extends DAO {
     // Xử lý data khi thua
     public void addLose(int id) {
         try {
-            String query = "UPDATE player SET lose = ?, score = ? WHERE id = ?)";
+            String query = "UPDATE player SET lose = ?, score = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, getLose(id) + 1);
             stm.setDouble(2, getScore(id) - 0.5);
@@ -250,7 +250,7 @@ public class PlayerDAO extends DAO {
     // Xử lý data khi hoà
     public void addDraw(int id) {
         try {
-            String query = "UPDATE player SET draw = ? WHERE id = ?)";
+            String query = "UPDATE player SET draw = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, getDraw(id) + 1);
             stm.setInt(2, id);
@@ -367,7 +367,7 @@ public class PlayerDAO extends DAO {
         try {
             String query = "UPDATE player SET isPlaying = ? WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
-            stm.setInt(1, ID);
+            stm.setInt(1, 0);
             stm.setInt(2, ID);
             System.out.println(stm);
             stm.executeUpdate();

@@ -18,6 +18,7 @@ public class Room {
     private Product product;
     private String password;
     private boolean isDrawHandle = false;
+    private boolean isSetProduct = false;
     private final PlayerDAO playerDAO;
     private final ProductDAO productDAO;
     private final GameMatchDAO gameMatchDAO;
@@ -82,6 +83,7 @@ public class Room {
     }
 
     public int getResult() {
+        System.out.println(p1Price + "-" + p2Price);
         if ((p1Price == p2Price) || (p1Price > product.getPrice() && p2Price > product.getPrice())) {
             return -1;
         }
@@ -112,6 +114,8 @@ public class Room {
 
     public Product getProduct() {return product;}
 
+    public boolean isSetProduct() {return isSetProduct;}
+
     public boolean isDrawHandle() {
         return isDrawHandle;
     }
@@ -136,4 +140,7 @@ public class Room {
         this.isDrawHandle = drawHandle;
     }
 
+    public void setSetProduct(boolean setProduct) {
+        this.isSetProduct = setProduct;
+    }
 }

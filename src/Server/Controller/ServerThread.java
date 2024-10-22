@@ -112,6 +112,11 @@ public class ServerThread extends Thread {
                     this.player = null;
                 }
 
+                // update
+                if (messageSplit[0].equals("update")) {
+                    write("update," + getStringFromPlayer(player));
+                }
+
                 //Xử lý lấy danh sách bảng xếp hạng
                 if (messageSplit[0].equals("leaderboard")) {
                     ArrayList<Player> ranks = playerDAO.getLeaderBoard();
@@ -124,11 +129,12 @@ public class ServerThread extends Thread {
                 }
 
                 // Lấy danh sách người chơi online
+                //Xử lý danh sách online
                 if (messageSplit[0].equals("onlineList")) {
                     ArrayList<Player> onlineList = playerDAO.getOnlineList();
                     StringBuilder res = new StringBuilder("return-onlineList,");
-                    for (Player user : onlineList) {
-                        res.append(getStringFromPlayer(user)).append(",");
+                    for (Player player : onlineList) {
+                        res.append(player.getUsername() + ',' + player.getNickName() + ',' + player.getAvatar() + ',');
                     }
                     System.out.println(res);
                     write(res.toString());
@@ -255,8 +261,12 @@ public class ServerThread extends Thread {
                 // Xử lý khi bắt đầu ván chơi
                 if (messageSplit[0].equals("new-game")) {
                     assert room != null;
-                    room.setProduct();
+                    if (!room.isSetProduct()) {
+                        room.setProduct();
+                        room.setSetProduct(true);
+                    }
                     Product product = room.getProduct();
+                    System.out.println(product.toString());
                     write("game-start," + product.getName() + "," + product.getAmount() + ',' + product.getPrice() + ',' + product.getPicture() + ',');
                 }
 

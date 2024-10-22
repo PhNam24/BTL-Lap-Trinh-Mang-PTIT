@@ -4,21 +4,108 @@
  */
 package TestClient.View;
 
-import javax.swing.JOptionPane;
+import Server.Model.Player;
+import Server.Model.Product;
+import TestClient.Client;
 
+import javax.swing.*;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author ACER
  */
 public class InGameForm extends javax.swing.JFrame {
-
+    private final Player competitor;
+    private final String competitorIP;
+    public Product product;
+    private Timer timer;
+    private int seconds;
+    private boolean isGuess = false;
     /**
      * Creates new form InGameForm
      */
-    public InGameForm() {
+    public InGameForm(Player competitor, String competitorIP, int roomID) {
         initComponents();
-        
         setLocationRelativeTo(null);
+        this.competitor = competitor;
+        this.competitorIP = competitorIP;
+
+        lblRoomID.setText("PHÒNG " + roomID);
+
+        txtPlayer2Name.setText(this.competitor.getNickName());
+        txtPlayer2WinRate.setText(this.competitor.getWinRate());
+        txtPlayer2Score.setText(String.valueOf(this.competitor.getScore()));
+
+
+        txtPlayer1Name.setText(Client.player.getNickName());
+        txtPlayer1WinRate.setText(Client.player.getWinRate());
+        txtPlayer1Score.setText(String.valueOf(Client.player.getScore()));
+
+        // setup timer
+        seconds = 30;
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String temp = String.valueOf(seconds);
+                if (temp.length() == 1) {
+                    temp = "0" + temp;
+                }
+                if (seconds == 0) {
+                    countDownLabel.setText("Thời Gian: " + "00:" + temp);
+                    try {
+                        if (!isGuess) {
+                            String guess = txtPlayer1Input.getText();
+                            if (guess.isEmpty()) {
+                                guess = "999999999";
+                            }
+                            Client.clientHandler.write("guess-price," + Client.player.getId() + "," + guess);
+                        }
+                        Client.clientHandler.write("result,");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                    }
+
+                } else {
+                    countDownLabel.setText("Thời Gian: " + "00:" + temp);
+                    seconds--;
+                }
+
+            }
+        });
+        startTimer();
+    }
+
+    public void exitGame() throws IOException {
+        try {
+            timer.stop();
+            Client.clientHandler.write("leave-room,");
+            Client.closeAllViews();
+            Client.openView(Client.View.HOMEPAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        Client.closeAllViews();
+        Client.openView(Client.View.HOMEPAGE);
+    }
+
+    public void stopAllThread() {
+        timer.stop();
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(rootPane, message);
+    }
+
+    public void startTimer() {
+        countDownLabel.setVisible(true);
+        seconds = 30;
+        timer.start();
+    }
+
+    public void stopTimer() {
+        timer.stop();
     }
 
     /**
@@ -29,36 +116,33 @@ public class InGameForm extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
+        lblRoomID = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtProductName = new javax.swing.JTextField();
+        txtProductUnit = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtPlayer2Name = new javax.swing.JTextField();
+        txtPlayer2WinRate = new javax.swing.JTextField();
+        txtPlayer2Score = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        btnPlayer1Submit = new javax.swing.JButton();
+        txtPlayer1Name = new javax.swing.JTextField();
+        txtPlayer1WinRate = new javax.swing.JTextField();
+        txtPlayer1Score = new javax.swing.JTextField();
+        txtPlayer1Input = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        btnInvite = new javax.swing.JButton();
+        countDownLabel = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,16 +152,24 @@ public class InGameForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Phòng 001");
+        countDownLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        lblRoomID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRoomID.setText("Phòng 000");
 
         jLabel11.setText("Tên sản phẩm:");
 
         jLabel12.setText("Đơn vị:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtProductName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtProductNameActionPerformed(evt);
+            }
+        });
+
+        txtProductUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProductUnitActionPerformed(evt);
             }
         });
 
@@ -90,11 +182,11 @@ public class InGameForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 305, Short.MAX_VALUE))
             .addComponent(jSeparator2)
         );
@@ -104,35 +196,39 @@ public class InGameForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel13.setText("Tên:");
+        jLabel13.setText("Tên: ");
+        assert this.competitor != null;
+        txtPlayer2Name.setEditable(false);
 
-        jLabel14.setText("Tỉ lệ thắng:");
+        jLabel14.setText("Tỷ lệ thắng: ");
+        txtPlayer2WinRate.setEditable(false);
 
-        jLabel15.setText("Điểm số:");
+        jLabel15.setText("Điểm số: ");
+        txtPlayer2Score.setEditable(false);
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtPlayer2Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtPlayer2NameActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPlayer2Score.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtPlayer2ScoreActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Người chơi 2");
+        jLabel2.setText("Đối thủ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -151,9 +247,9 @@ public class InGameForm extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField2))))
+                            .addComponent(txtPlayer2WinRate, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPlayer2Name)
+                            .addComponent(txtPlayer2Score))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -163,32 +259,42 @@ public class InGameForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer2Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer2WinRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer2Score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel18.setText("Tên:");
+        txtPlayer1Name.setEditable(false);
 
-        jLabel19.setText("Tỉ lệ thắng:");
+        jLabel19.setText("Tỷ lệ thắng:");
+        txtPlayer1WinRate.setEditable(false);
 
         jLabel20.setText("Điểm số:");
+        txtPlayer1Score.setEditable(false);
 
-        jLabel21.setText("Dự đoán");
+        jLabel21.setText("Dự Đoán");
 
-        jButton1.setText("Xác nhận");
+        btnPlayer1Submit.setText("Xác nhận");
+        btnPlayer1Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    submitAnswer(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Người chơi 1");
-
-        jLabel4.setText("Thời gian còn lại:");
+        jLabel3.setText("Bạn");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -197,30 +303,29 @@ public class InGameForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPlayer1Submit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField8)))
+                            .addComponent(txtPlayer1WinRate)
+                            .addComponent(txtPlayer1Name)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField11)))
+                            .addComponent(txtPlayer1Score)
+                            .addComponent(txtPlayer1Input)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(countDownLabel)
+                                .addGap(18, 18, 18)))
                         .addGap(0, 105, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -231,39 +336,35 @@ public class InGameForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer1Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer1WinRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer1Score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlayer1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(countDownLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnPlayer1Submit)
                 .addContainerGap())
         );
-
-        btnInvite.setText("Mời người chơi");
-        btnInvite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInviteActionPerformed(evt);
-            }
-        });
 
         btnExit.setText("Thoát trận");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+                try {
+                    btnExitActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -282,10 +383,9 @@ public class InGameForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(370, 370, 370))
+                                .addComponent(lblRoomID)
+                                .addGap(300, 300, 300))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInvite)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(btnExit)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -296,12 +396,11 @@ public class InGameForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(lblRoomID))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExit)
-                            .addComponent(btnInvite))))
+                            .addComponent(btnExit))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -321,107 +420,51 @@ public class InGameForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowClosing
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtPlayer2ScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlayer2ScoreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtPlayer2ScoreActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtPlayer2NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlayer2NameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtPlayer2NameActionPerformed
 
     private void btnInviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInviteActionPerformed
         // TODO add your handling code here:
-        javax.swing.JTextField playerNameField = new javax.swing.JTextField();
-
-        // Tạo một hộp thoại với JTextField
-        Object[] message = {
-            "Nhập tên người chơi:", playerNameField
-        };
-
-        // Hiện thị hộp thoại với chỉ một nút OK
-        int option = JOptionPane.showConfirmDialog(this, message, "Mời người chơi", JOptionPane.OK_CANCEL_OPTION);
-
-        if (option == JOptionPane.OK_OPTION) {
-            String playerName = playerNameField.getText().trim();
-            if (!playerName.isEmpty()) {
-                // Xử lý logic để mời người chơi
-                JOptionPane.showMessageDialog(this, "Đã mời " + playerName + " tham gia!");
-                 InGameForm ingameForm = new InGameForm();
-                ingameForm.setVisible(true);
-
-                // Ẩn MainLobbyForm (nếu bạn muốn ẩn form hiện tại)
-                this.dispose();
-                // Thêm logic gửi lời mời ở đây nếu cần
-            } else {
-                JOptionPane.showMessageDialog(this, "Tên người chơi không hợp lệ!");
-            }
-        }
     }//GEN-LAST:event_btnInviteActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
-        // Tạo một thông báo xác nhận
-        int confirm = JOptionPane.showConfirmDialog(this,
-            "Bạn có chắc chắn muốn thoát trận?", 
-            "Xác nhận", 
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE);
-
-        // Kiểm tra phản hồi từ người dùng
-        if (confirm == JOptionPane.YES_OPTION) {
-            // Logic để thoát trận (nếu cần)
-            // Ví dụ: Đóng IngameForm hoặc quay lại MainLobbyForm
-            this.dispose(); // Đóng IngameForm nếu bạn muốn
-            // Nếu cần trở về MainLobbyForm, hãy khởi tạo nó và hiển thị
-            MainLobbyForm mainLobby = new MainLobbyForm();
-            mainLobby.setVisible(true);
-        }
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        exitGame();//GEN-FIRST:event_btnExitActionPerformed
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtProductNameActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InGameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InGameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InGameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InGameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void txtProductUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductUnitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductUnitActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InGameForm().setVisible(true);
-            }
-        });
+    public void setProduct(Product product) {
+        this.product = product;
+        txtProductName.setText(product.getName());
+        txtProductUnit.setText(product.getAmount());
     }
 
+    public void newGame() throws IOException {
+        Client.clientHandler.write("new-game,");
+    }
+
+    private void submitAnswer(java.awt.event.ActionEvent evt) throws IOException {
+        double price = Double.parseDouble(txtPlayer1Input.getText());
+        Client.clientHandler.write("guess-price" + "," + Client.player.getId() + "," + price);
+        txtPlayer1Input.setText("Đã đoán: " + price + "vnđ");
+        txtPlayer1Input.setEditable(false);
+        isGuess = true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnInvite;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnPlayer1Submit;
+    private javax.swing.JLabel lblRoomID;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -433,20 +476,19 @@ public class InGameForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel countDownLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtPlayer1Input;
+    private javax.swing.JTextField txtPlayer1Name;
+    private javax.swing.JTextField txtPlayer1Score;
+    private javax.swing.JTextField txtPlayer1WinRate;
+    private javax.swing.JTextField txtPlayer2Name;
+    private javax.swing.JTextField txtPlayer2Score;
+    private javax.swing.JTextField txtPlayer2WinRate;
+    private javax.swing.JTextField txtProductName;
+    private javax.swing.JTextField txtProductUnit;
     // End of variables declaration//GEN-END:variables
 }

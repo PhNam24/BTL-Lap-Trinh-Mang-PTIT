@@ -4,11 +4,19 @@
  */
 package TestClient.View;
 
+import Server.Model.Player;
+import TestClient.Client;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author ACER
  */
-public class Rankings extends javax.swing.JFrame {
+public class Rankings extends JFrame {
 
     /**
      * Creates new form Rankings
@@ -30,76 +38,91 @@ public class Rankings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        jScrollPane1 = new JScrollPane();
+        tblRankings = new JTable();
+        btnBack = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Bảng xếp hạng");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Tên", "Tổng số trận", "Tỉ lệ thắng", "Điểm số", "Xếp hạng"
+        String[] columnNames = {"Tên", "Tổng số trận", "Tỷ lệ thắng", "Điểm số", "Xếp hạng"};
+        tblModel = new DefaultTableModel(columnNames, 0) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Không cho phép chỉnh sửa bất kỳ ô nào
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        };
+
+        tblRankings = new JTable(tblModel);
+        jScrollPane1.setViewportView(tblRankings);
 
         btnBack.setText("Quay lại");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                try {
+                    btnBackActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBack)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(207, 207, 207))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnBackActionPerformed
             // TODO add your handling code here:
-             MainLobbyForm mainLobby = new MainLobbyForm();
-            mainLobby.setVisible(true);
-            this.dispose(); // Đóng cửa sổ Rankings
+        Client.openView(Client.View.HOMEPAGE);
+        Client.closeView(Client.View.RANK);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    
+    public void setDataRanking(ArrayList<Player> leaderBoard) {
+        ArrayList<Object[]> data = new ArrayList<>();
+        for(int i = 0; i < leaderBoard.size(); i++) {
+            String name = leaderBoard.get(i).getNickName();
+            int matchNum = leaderBoard.get(i).getNumberOfGame();
+            String winRate = leaderBoard.get(i).getWinRate();
+            double score = leaderBoard.get(i).getScore();
+            int rank = i + 1;
+            data.add(new Object[]{name, matchNum, winRate, score, rank});
+        }
+        for (Object[] row : data) {
+            tblModel.addRow(row);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -112,9 +135,9 @@ public class Rankings extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -124,7 +147,7 @@ public class Rankings extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Rankings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Rankings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Rankings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -138,9 +161,10 @@ public class Rankings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private JButton btnBack;
+    private JLabel jLabel1;
+    private JScrollPane jScrollPane1;
+    private DefaultTableModel tblModel;
+    private JTable tblRankings;
     // End of variables declaration//GEN-END:variables
 }

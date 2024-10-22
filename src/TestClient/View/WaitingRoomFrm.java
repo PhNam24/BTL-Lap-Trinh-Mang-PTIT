@@ -26,12 +26,12 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Caro Game by Ju");
         isOpenning = false;
-        this.setIconImage(new ImageIcon("assets/image/caroicon.png").getImage());
+        this.setIconImage(new ImageIcon("src/assets/image/caroicon.png").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        loadingIcon.setIcon(new ImageIcon("assets/icon/loading2.gif"));
-        loadingButtonImage.setIcon(new ImageIcon("assets/icon/door_exit.png"));
+        loadingIcon.setIcon(new ImageIcon("src/assets/icon/loading2.gif"));
+        loadingButtonImage.setIcon(new ImageIcon("src/assets/icon/door_exit.png"));
         roomPasswordLabel.setVisible(false);
     }
 
@@ -103,8 +103,6 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         pendingMessageLabel.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         pendingMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendingMessageLabel.setText("Đang chờ người chơi khác vào phòng");
-
-        loadingIcon.setText("jLabel3");
 
         loadingButtonImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

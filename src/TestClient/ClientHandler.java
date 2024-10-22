@@ -1,6 +1,7 @@
 package TestClient;
 
 import Server.Model.Player;
+import Server.Model.Product;
 
 import javax.swing.*;
 import java.io.*;
@@ -13,7 +14,7 @@ public class ClientHandler extends Thread {
 
     public ArrayList<Player> getLeaderBoard(String[] msg) {
         ArrayList<Player> leaderBoard = new ArrayList<>();
-        for(int i = 1; i < msg.length; i += 10) {
+        for(int i = 1; i < msg.length; i += 9) {
             leaderBoard.add(new Player(
                     Integer.parseInt(msg[i]),
                     msg[i + 1],
@@ -43,6 +44,18 @@ public class ClientHandler extends Thread {
                 Double.parseDouble(msg[start + 8]));
     }
 
+    public ArrayList<Player> getOnlineList(String[] msg) {
+        ArrayList<Player> onlineList = new ArrayList<>();
+        for (int i = 1; i < msg.length; i += 3) {
+            onlineList.add(new Player(
+                    msg[i],
+                    msg[i + 1],
+                    msg[i + 2]
+            ));
+        }
+        return onlineList;
+    }
+
     @Override
     public void run() {
         try {
@@ -62,6 +75,7 @@ public class ClientHandler extends Thread {
                 if (messageSplit[0].equals("server-send-id")) {
                     int serverId = Integer.parseInt(messageSplit[1]);
                 }
+
                 //Đăng nhập thành công
                 if (messageSplit[0].equals("login-success")) {
                     System.out.println("Đăng nhập thành công");
@@ -92,6 +106,25 @@ public class ClientHandler extends Thread {
                     JOptionPane.showMessageDialog(Client.registerForm, "Tên tài khoản đã được người khác sử dụng");
                 }
 
+                //update
+                if (messageSplit[0].equals("update")) {
+                    System.out.println(message);
+                    Client.player = getPlayerFromString(1, messageSplit);
+                }
+
+                //Xử lý bảng xếp hạng
+                if (messageSplit[0].equals("return-leaderboard")) {
+                    if (Client.rankings != null) {
+                        Client.rankings.setDataRanking(getLeaderBoard(messageSplit));
+                    }
+                }
+                //Xử lý xem danh sách online
+                if(messageSplit[0].equals("return-onlineList")) {
+                    if (Client.onlineList != null) {
+                        Client.onlineList.setDataOnline(getOnlineList(messageSplit));
+                    }
+                }
+
                 //Xử lý nhận thông tin, chat từ toàn server
                 if (messageSplit[0].equals("chat-server")) {
                     if (Client.mainLobbyForm != null) {
@@ -112,7 +145,7 @@ public class ClientHandler extends Thread {
                     JOptionPane.showMessageDialog(Client.mainLobbyForm, "Không tìm thấy phòng");
                 }
                 // Xử lý phòng có mật khẩu sai
-                if (messageSplit[0].equals("room-wrong-mainLobbyForm")) {
+                if (messageSplit[0].equals("room-wrong-password")) {
                     Client.closeAllViews();
                     Client.openView(Client.View.HOMEPAGE);
                     JOptionPane.showMessageDialog(Client.mainLobbyForm, "Mật khẩu phòng sai");
@@ -139,28 +172,31 @@ public class ClientHandler extends Thread {
                     Player competitor = getPlayerFromString(4, messageSplit);
                     if (Client.findRoomFrm != null) {
                         Client.findRoomFrm.showFoundRoom();
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException ex) {
-                            JOptionPane.showMessageDialog(Client.findRoomFrm, "Lỗi khi sleep thread");
-                        }
+//                        try {
+//                            Thread.sleep(1500);
+//                        } catch (InterruptedException ex) {
+//                            JOptionPane.showMessageDialog(Client.findRoomFrm, "Lỗi khi sleep thread");
+//                        }
                     } else if (Client.waitingRoomFrm != null) {
                         Client.waitingRoomFrm.showFoundCompetitor();
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException ex) {
-                            JOptionPane.showMessageDialog(Client.waitingRoomFrm, "Lỗi khi sleep thread");
-                        }
+//                        try {
+//                            Thread.sleep(1500);
+//                        } catch (InterruptedException ex) {
+//                            JOptionPane.showMessageDialog(Client.waitingRoomFrm, "Lỗi khi sleep thread");
+//                        }
                     }
                     Client.closeAllViews();
                     System.out.println("Đã vào phòng: " + roomID);
                     //Xử lý vào phòng
                     Client.openView(Client.View.GAME_CLIENT
                             , competitor
-                            , roomID
-                            , isStart
-                            , competitorIP);
-                    //Client.inGameForm.newgame();
+                            , competitorIP
+                            , roomID);
+                    try {
+                        Client.inGameForm.newGame();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
 
                 //Tạo phòng và server trả về tên phòng
@@ -172,12 +208,46 @@ public class ClientHandler extends Thread {
                         Client.waitingRoomFrm.setRoomPassword("Mật khẩu phòng: " + messageSplit[2]);
                 }
 
-                if (messageSplit[0].equals("left-room")) {
-                    //Client.inGameForm.stopTimer();
+                if (messageSplit[0].equals("leave-room")) {
+                    Client.inGameForm.stopTimer();
                     Client.closeAllViews();
                     Client.openView(Client.View.GAME_NOTICE, "Đối thủ đã thoát khỏi phòng", "Đang trở về trang chủ");
                     Thread.sleep(3000);
                     Client.closeAllViews();
+                    Client.openView(Client.View.HOMEPAGE);
+                }
+
+                // new game
+                if (messageSplit[0].equals("game-start")) {
+                    if (Client.inGameForm != null) {
+                        Client.inGameForm.setProduct(new Product(messageSplit[1], messageSplit[2], Double.parseDouble(messageSplit[3]), messageSplit[4]));
+                    }
+                }
+
+                // win
+                if (messageSplit[0].equals("win")) {
+                    Client.inGameForm.stopAllThread();
+                    JOptionPane.showMessageDialog(Client.inGameForm,"Bạn là người chiến thắng! Gáy to lên!\nGiá của " + Client.inGameForm.product.getAmount()
+                            + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    Client.closeView(Client.View.GAME_CLIENT);
+                    Client.openView(Client.View.HOMEPAGE);
+                }
+
+                // lose
+                if (messageSplit[0].equals("lose")) {
+                    Client.inGameForm.stopAllThread();
+                    JOptionPane.showMessageDialog(Client.inGameForm,"Gà lắm hehehe! Bạn thua mất rồi!\nGiá của " + Client.inGameForm.product.getAmount()
+                            + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    Client.closeView(Client.View.GAME_CLIENT);
+                    Client.openView(Client.View.HOMEPAGE);
+                }
+
+                // draw
+                if (messageSplit[0].equals("draw")) {
+                    Client.inGameForm.stopAllThread();
+                    JOptionPane.showMessageDialog(Client.inGameForm,"Thật tuyệt vời! Hai bạn ngang sức ngang tài!\nGiá của " + Client.inGameForm.product.getAmount()
+                           + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    Client.closeView(Client.View.GAME_CLIENT);
                     Client.openView(Client.View.HOMEPAGE);
                 }
             }

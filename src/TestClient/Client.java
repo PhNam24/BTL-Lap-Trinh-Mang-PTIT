@@ -23,6 +23,7 @@ public class Client {
     public static RoomListFrm roomListFrm;
     public static JoinRoomPasswordFrm joinRoomPasswordFrm;
     public static WaitingRoomFrm waitingRoomFrm;
+    public static CreateRoomPasswordFrm createRoomPasswordFrm;
 
     public static ClientHandler clientHandler;
 
@@ -62,20 +63,20 @@ public class Client {
                     findRoomFrm.setVisible(true);
                     break;
                 case WAITING_ROOM:
-//                    waitingRoomFrm = new WaitingRoomFrm();
-//                    waitingRoomFrm.setVisible(true);
-//                    break;
+                    waitingRoomFrm = new WaitingRoomFrm();
+                    waitingRoomFrm.setVisible(true);
+                    break;
                 case CREATE_ROOM_PASSWORD:
-//                    createRoomPasswordFrm = new CreateRoomPasswordFrm();
-//                    createRoomPasswordFrm.setVisible(true);
-//                    break;
+                    createRoomPasswordFrm = new CreateRoomPasswordFrm();
+                    createRoomPasswordFrm.setVisible(true);
+                    break;
                 case RANK:
                     rankings = new Rankings();
                     rankings.setVisible(true);
                     break;
-                case ROOM_NAME_FRM:
-//                    roomNameFrm = new RoomNameFrm();
-//                    roomNameFrm.setVisible(true);
+                case ONLINE:
+                    onlineList = new OnlineList();
+                    onlineList.setVisible(true);
                     break;
             }
         }
@@ -90,20 +91,13 @@ public class Client {
         }
     }
 
-    public static void openView(View viewName, Player competitor, int room_ID, int isStart, String competitorIP) {
+    public static void openView(View viewName, Player competitor, String competitorIP, int room_ID) {
         if (viewName == View.GAME_CLIENT) {
-            //inGameForm = new InGameForm(competitor, room_ID, isStart, competitorIP);
-            inGameForm = new InGameForm();
+            inGameForm = new InGameForm(competitor, competitorIP, room_ID);
             inGameForm.setVisible(true);
         }
     }
 
-    public static void openView(View viewName, Player player) {
-        if (viewName == View.COMPETITOR_INFO) {
-//            competitorInfoFrm = new CompetitorInfoFrm(user);
-//            competitorInfoFrm.setVisible(true);
-        }
-    }
 
     public static void openView(View viewName, String arg1, String arg2) {
         if (viewName != null) {
@@ -113,7 +107,7 @@ public class Client {
                     gameNoticeFrm.setVisible(true);
                     break;
                 case LOGIN:
-//                    loginForm = new LoginForm(arg1, arg2);
+                    loginForm = new LoginForm(arg1, arg2);
                     loginForm = new LoginForm();
                     loginForm.setVisible(true);
             }
@@ -143,17 +137,14 @@ public class Client {
                     waitingRoomFrm.dispose();
                     break;
                 case GAME_CLIENT:
-//                    inGameForm.stopAllThread();
+                    inGameForm.stopAllThread();
                     inGameForm.dispose();
                     break;
                 case CREATE_ROOM_PASSWORD:
-//                    createRoomPasswordFrm.dispose();
+                    createRoomPasswordFrm.dispose();
                     break;
                 case JOIN_ROOM_PASSWORD:
                     joinRoomPasswordFrm.dispose();
-                    break;
-                case COMPETITOR_INFO:
-//                    competitorInfoFrm.dispose();
                     break;
                 case RANK:
                     rankings.dispose();
@@ -161,8 +152,8 @@ public class Client {
                 case GAME_NOTICE:
                     gameNoticeFrm.dispose();
                     break;
-                case ROOM_NAME_FRM:
-//                    roomNameFrm.dispose();
+                case ONLINE:
+                    onlineList.dispose();
                     break;
             }
 
@@ -180,33 +171,35 @@ public class Client {
             mainLobbyForm.dispose();
         }
         if (onlineList != null) {
+            onlineList.stopAllThread();
             onlineList.dispose();
         }
         if (rankings != null) {
             rankings.dispose();
         }
         if (inGameForm != null) {
+            inGameForm.stopAllThread();
             inGameForm.dispose();
         }
         if (gameNoticeFrm != null) {
             gameNoticeFrm.dispose();
         }
-
         if (findRoomFrm != null) {
+            findRoomFrm.stopAllThread();
             findRoomFrm.dispose();
         };
-
         if (roomListFrm != null) {
             roomListFrm.dispose();
         };
-
         if (joinRoomPasswordFrm != null) {
             joinRoomPasswordFrm.dispose();
         };
-
         if (waitingRoomFrm != null) {
             waitingRoomFrm.dispose();
         };
+        if (createRoomPasswordFrm != null) {
+            createRoomPasswordFrm.dispose();
+        }
     }
 
     public static void main(String[] args) {
@@ -233,6 +226,7 @@ public class Client {
         COMPETITOR_INFO,
         RANK,
         GAME_NOTICE,
-        ROOM_NAME_FRM
+        ROOM_NAME_FRM,
+        ONLINE
     }
 }

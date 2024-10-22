@@ -150,9 +150,13 @@ public class FindRoomFrm extends javax.swing.JFrame {
         foundLabel.setForeground(new java.awt.Color(0, 51, 204));
         foundLabel.setText("Đã tìm thấy đối thủ, đang vào phòng");
 
-        loadingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadingButtonActionPerformed(evt);
+        loadingButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    loadingButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -204,7 +208,7 @@ public class FindRoomFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadingButtonActionPerformed
+    private void loadingButtonActionPerformed(ActionEvent evt) throws IOException {//GEN-FIRST:event_loadingButtonActionPerformed
         if (found)
             return;
         try {

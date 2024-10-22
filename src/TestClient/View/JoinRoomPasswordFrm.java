@@ -10,6 +10,7 @@ import TestClient.Client;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 /**
  * @author Admin
@@ -24,13 +25,13 @@ public class JoinRoomPasswordFrm extends javax.swing.JFrame {
     public JoinRoomPasswordFrm(int room, String password) {
         initComponents();
         this.setTitle("Caro Game Nhóm 5");
-        this.setIconImage(new ImageIcon("assets/image/caroicon.png").getImage());
+        this.setIconImage(new ImageIcon("src/assets/image/caroicon.png").getImage());
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.room = room;
         this.password = password;
-        exitButton.setIcon(new ImageIcon("assets/icon/door_exit.png"));
+        exitButton.setIcon(new ImageIcon("src/assets/icon/door_exit.png"));
     }
 
     /**
@@ -61,7 +62,11 @@ public class JoinRoomPasswordFrm extends javax.swing.JFrame {
 
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
+                try {
+                    exitButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -131,15 +136,16 @@ public class JoinRoomPasswordFrm extends javax.swing.JFrame {
     private void goToRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToRoomButtonActionPerformed
         try {
             String password = passwordInput.getText();
-            if (!password.equals(this.password))
+            if (!password.equals(this.password)) {
                 throw new Exception("Mật khẩu không chính xác");
+            }
             Client.clientHandler.write("join-room," + this.room);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_goToRoomButtonActionPerformed
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_exitButtonActionPerformed
         Client.closeView(Client.View.JOIN_ROOM_PASSWORD);
         Client.openView(Client.View.HOMEPAGE);
     }//GEN-LAST:event_exitButtonActionPerformed

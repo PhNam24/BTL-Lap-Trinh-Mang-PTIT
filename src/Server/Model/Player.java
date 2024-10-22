@@ -91,6 +91,10 @@ public class Player {
         return this.win + this.lose + this.draw;
     }
 
+    public String getWinRate() {
+        return getNumberOfGame() > 0 ? String.valueOf(this.win * 100.0 / this.getNumberOfGame()) + "%" : "0%";
+    }
+
     public int getId() {
         return id;
     }
