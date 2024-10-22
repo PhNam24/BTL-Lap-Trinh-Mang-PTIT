@@ -24,9 +24,7 @@ public class Rankings extends JFrame {
     public Rankings() {
         initComponents();
         setLocationRelativeTo((null));
-        // Thêm listener để xử lý sự kiện đóng cửa sổ
-        
-        
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
     }
 
     /**

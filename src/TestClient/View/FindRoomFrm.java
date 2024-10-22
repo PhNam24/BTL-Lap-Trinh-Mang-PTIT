@@ -28,7 +28,7 @@ public class FindRoomFrm extends javax.swing.JFrame {
     public FindRoomFrm() {
         initComponents();
         this.setTitle("Hãy chọn giá đúng");
-        this.setIconImage(new ImageIcon("src/assets/image/caroicon.png").getImage());
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

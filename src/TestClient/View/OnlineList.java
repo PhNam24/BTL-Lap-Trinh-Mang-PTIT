@@ -23,7 +23,7 @@ public class OnlineList extends JFrame {
      */
     public OnlineList() {
         initComponents();
-        
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         setLocationRelativeTo(null);
         isClicked = false;
         requestUpdate();

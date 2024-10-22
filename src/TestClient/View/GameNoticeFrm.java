@@ -24,7 +24,7 @@ public class GameNoticeFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setIconImage(new ImageIcon("assets/image/caroicon.png").getImage());
+        this.setIconImage(new ImageIcon("assets/icon/avt.png").getImage());
         this.setResizable(false);
         frameLabel.setText(title);
         messageLabel.setText(message);

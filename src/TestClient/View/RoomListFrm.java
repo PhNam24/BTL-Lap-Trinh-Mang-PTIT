@@ -30,8 +30,8 @@ public class RoomListFrm extends javax.swing.JFrame {
      */
     public RoomListFrm() {
         initComponents();
-        this.setTitle("Caro Game by Ju");
-        this.setIconImage(new ImageIcon("src/assets/image/caroicon.png").getImage());
+        this.setTitle("Hãy chọn giá đúng");
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

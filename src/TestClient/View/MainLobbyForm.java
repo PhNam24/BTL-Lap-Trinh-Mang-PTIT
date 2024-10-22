@@ -6,7 +6,7 @@ package TestClient.View;
 
 import TestClient.Client;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class MainLobbyForm extends javax.swing.JFrame {
      */
     public MainLobbyForm() {
         initComponents();
-
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         setLocationRelativeTo(null);
     }
 

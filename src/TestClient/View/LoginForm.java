@@ -4,7 +4,8 @@
  */
 package TestClient.View;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+
 import TestClient.Client;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     public LoginForm(String taiKhoan, String matKhau) {
         initComponents();
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         txtPassword.setText(matKhau);
         txtUsername.setText(taiKhoan);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

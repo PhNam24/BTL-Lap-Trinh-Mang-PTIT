@@ -4,33 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update gameplay">
-      <change afterPath="$PROJECT_DIR$/src/TestClient/View/CreateRoomPasswordFrm.java" afterDir="false" />
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="done prj">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/CreateRoomPasswordFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/CreateRoomPasswordFrm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/FindRoomFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/FindRoomFrm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/GameNoticeFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/GameNoticeFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/JoinRoomPasswordFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/JoinRoomPasswordFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/LoginForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/OnlineList.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/OnlineList.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/OnlineList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/OnlineList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/Rankings.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/Rankings.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/Rankings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/Rankings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/RoomListFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RoomListFrm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/WaitingRoomFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/WaitingRoomFrm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/ai.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/blank.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/blank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/border.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/border1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/border2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/caroicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/o.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/o1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/o2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/o2_pre.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/o3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/owin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/send.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/send1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/send2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/white.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/x1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/x2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/x2_pre.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/x3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image/xwin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sound/1click.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sound/click.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sound/win.wav" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +268,7 @@
       <workItem from="1729235394885" duration="3325000" />
       <workItem from="1729251646475" duration="2688000" />
       <workItem from="1729447512613" duration="3568000" />
-      <workItem from="1729473701062" duration="32142000" />
+      <workItem from="1729473701062" duration="33081000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -359,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729491808372</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="done prj">
+      <option name="closed" value="true" />
+      <created>1729586644606</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729586644606</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +400,7 @@
     <MESSAGE value="update test client" />
     <MESSAGE value="update onlineList" />
     <MESSAGE value="update gameplay" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gameplay" />
+    <MESSAGE value="done prj" />
+    <option name="LAST_COMMIT_MESSAGE" value="done prj" />
   </component>
 </project>

@@ -28,6 +28,7 @@ public class InGameForm extends javax.swing.JFrame {
      */
     public InGameForm(Player competitor, String competitorIP, int roomID) {
         initComponents();
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         setLocationRelativeTo(null);
         this.competitor = competitor;
         this.competitorIP = competitorIP;

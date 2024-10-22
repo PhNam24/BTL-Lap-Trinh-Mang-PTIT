@@ -18,6 +18,7 @@ public class RegisterForm extends JFrame {
     public RegisterForm() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
     }
 
     /**
