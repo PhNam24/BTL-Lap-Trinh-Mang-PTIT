@@ -4,40 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="done prj">
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update icon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/CreateRoomPasswordFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/CreateRoomPasswordFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/FindRoomFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/FindRoomFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/GameNoticeFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/GameNoticeFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/JoinRoomPasswordFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/JoinRoomPasswordFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RoomListFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RoomListFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/WaitingRoomFrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/WaitingRoomFrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/ai.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/blank.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/blank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/border.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/border1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/border2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/caroicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/o.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/o1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/o2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/o2_pre.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/o3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/owin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/send.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/send1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/send2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/white.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/x2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/x2_pre.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/x3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/image/xwin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sound/1click.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sound/click.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sound/win.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +71,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Code/Linhtinh/CaroServer",
+    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -268,7 +237,8 @@
       <workItem from="1729235394885" duration="3325000" />
       <workItem from="1729251646475" duration="2688000" />
       <workItem from="1729447512613" duration="3568000" />
-      <workItem from="1729473701062" duration="33081000" />
+      <workItem from="1729473701062" duration="33831000" />
+      <workItem from="1729734709165" duration="308000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -374,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729586644606</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update icon">
+      <option name="closed" value="true" />
+      <created>1729587579003</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729587579003</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +379,7 @@
     <MESSAGE value="update onlineList" />
     <MESSAGE value="update gameplay" />
     <MESSAGE value="done prj" />
-    <option name="LAST_COMMIT_MESSAGE" value="done prj" />
+    <MESSAGE value="update icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="update icon" />
   </component>
 </project>

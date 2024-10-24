@@ -19,6 +19,11 @@ public class RegisterForm extends JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
+        cbxAvatar.setMaximumRowCount(5);
+        for (int i = 0; i <= 5; i++) {
+            cbxAvatar.addItem(new ImageIcon("src/assets/avatar/" + i + ".jpg"));
+        }
+        setSize(400, 400);
     }
 
     /**
@@ -69,8 +74,6 @@ public class RegisterForm extends JFrame {
         jLabel4.setText("Nickname:");
 
         jLabel5.setText("Avatar:");
-
-        cbxAvatar.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,15 +152,16 @@ public class RegisterForm extends JFrame {
             if (password.isEmpty())
                 throw new Exception("Vui lòng nhập mật khẩu");
             String nickName = txtNickname.getText();
-//            int avatar = avatarComboBox.getSelectedIndex();
-//            if (avatar == -1) {
-//                throw new Exception("Vui lòng chọn avatar");
-//            }
+            int avatar = cbxAvatar.getSelectedIndex();
+            if (avatar == -1) {
+                throw new Exception("Vui lòng chọn avatar");
+            }
             if (nickName.isEmpty())
                 throw new Exception("Vui lòng nhập nickname");
             Client.closeAllViews();
             Client.openView(Client.View.GAME_NOTICE, "Đăng kí tài khoản", "Đang chờ phản hồi");
-            Client.clientHandler.write("register," + username + "," + password + "," + nickName + "," + null);
+            System.out.println(avatar);
+            Client.clientHandler.write("register," + username + "," + password + "," + nickName + "," + avatar);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
@@ -200,7 +204,7 @@ public class RegisterForm extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton btnBackToLogin;
     private JButton btnConfirmRegister;
-    private JComboBox<String> cbxAvatar;
+    private JComboBox<ImageIcon> cbxAvatar;
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel jLabel3;
