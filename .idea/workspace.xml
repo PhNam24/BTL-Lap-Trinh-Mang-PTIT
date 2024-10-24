@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update icon">
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update registerAvt">
+      <change afterPath="$PROJECT_DIR$/src/assets/product/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/product/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/product/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/product/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/product/5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/5.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +84,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT",
+    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT/src/assets",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,8 +104,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient\View" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets" />
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets\avatar" />
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient\View" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
     </key>
@@ -179,9 +193,9 @@
       <list>
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.MainLobbyForm" />
         <item itemvalue="Application.WaitingRoomFrm" />
         <item itemvalue="Application.InGameForm" />
-        <item itemvalue="Application.MainLobbyForm" />
       </list>
     </recent_temporary>
   </component>
@@ -238,7 +252,9 @@
       <workItem from="1729251646475" duration="2688000" />
       <workItem from="1729447512613" duration="3568000" />
       <workItem from="1729473701062" duration="33831000" />
-      <workItem from="1729734709165" duration="308000" />
+      <workItem from="1729734709165" duration="2019000" />
+      <workItem from="1729741043316" duration="301000" />
+      <workItem from="1729748334013" duration="1805000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -352,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729587579003</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update registerAvt">
+      <option name="closed" value="true" />
+      <created>1729735228145</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729735228145</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,6 +404,7 @@
     <MESSAGE value="update gameplay" />
     <MESSAGE value="done prj" />
     <MESSAGE value="update icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="update icon" />
+    <MESSAGE value="update registerAvt" />
+    <option name="LAST_COMMIT_MESSAGE" value="update registerAvt" />
   </component>
 </project>
