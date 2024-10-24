@@ -5,6 +5,7 @@
 package TestClient.View;
 import TestClient.Client;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -21,7 +22,8 @@ public class RegisterForm extends JFrame {
         this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         cbxAvatar.setMaximumRowCount(5);
         for (int i = 0; i <= 5; i++) {
-            cbxAvatar.addItem(new ImageIcon("src/assets/avatar/" + i + ".png"));
+            cbxAvatar.addItem(new ImageIcon(new ImageIcon("src/assets/avatar/" + i + ".png")
+                    .getImage().getScaledInstance(90, 90 , Image.SCALE_SMOOTH)));
         }
         setSize(400, 400);
     }
