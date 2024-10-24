@@ -4,22 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update registerAvt">
-      <change afterPath="$PROJECT_DIR$/src/assets/product/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/product/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/product/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/product/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/product/5.jpg" afterDir="false" />
+    <list default="true" id="974d78f3-0e8a-45df-92cf-6db5ba671754" name="Changes" comment="update product Picture">
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/avatar/5.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/PlayerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/DAO/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/DAO/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/View/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/View/EditPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/EditPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/View/EditProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/EditProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/View/PlayerManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/PlayerManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/View/ProductManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/View/ProductManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/InGameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/MainLobbyForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/avatar/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/avatar/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClient/View/RegisterForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/avatar/5.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +94,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT/src/assets",
+    "last_opened_file_path": "D:/PTIT/LTM/BTL-Lap-Trinh-Mang-PTIT/src/assets/avatar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,8 +114,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets\avatar" />
+      <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\assets" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient\View" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT\src\TestClient" />
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
@@ -116,7 +126,7 @@
       <recent name="D:\PTIT\LTM\BTL-Lap-Trinh-Mang-PTIT" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestClient.Client" />
       <module name="BTL-Lap-Trinh-Mang-PTIT" />
@@ -191,8 +201,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.MainLobbyForm" />
         <item itemvalue="Application.WaitingRoomFrm" />
         <item itemvalue="Application.InGameForm" />
@@ -254,7 +264,9 @@
       <workItem from="1729473701062" duration="33831000" />
       <workItem from="1729734709165" duration="2019000" />
       <workItem from="1729741043316" duration="301000" />
-      <workItem from="1729748334013" duration="1805000" />
+      <workItem from="1729748334013" duration="2054000" />
+      <workItem from="1729764474743" duration="500000" />
+      <workItem from="1729794382371" duration="4262000" />
     </task>
     <task id="LOCAL-00001" summary="update Server">
       <option name="closed" value="true" />
@@ -376,7 +388,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729735228145</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update product Picture">
+      <option name="closed" value="true" />
+      <created>1729750230054</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729750230054</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,6 +425,7 @@
     <MESSAGE value="done prj" />
     <MESSAGE value="update icon" />
     <MESSAGE value="update registerAvt" />
-    <option name="LAST_COMMIT_MESSAGE" value="update registerAvt" />
+    <MESSAGE value="update product Picture" />
+    <option name="LAST_COMMIT_MESSAGE" value="update product Picture" />
   </component>
 </project>

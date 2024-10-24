@@ -58,14 +58,20 @@ public class ProductDAO extends DAO {
     }
 
     // Lấy tên sản phẩm theo ID
-    public String getProductName(int id) {
+    public Product getProductByID(int id) {
         try {
-            String query = "SELECT name FROM product WHERE id = ?";
+            String query = "SELECT * FROM product WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                return rs.getString(1);
+                return new Product(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                        rs.getString(5)
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -77,15 +77,10 @@ public class PlayerManagement extends JFrame {
                 Player player = new Player();
                 if (e.getClickCount() == 1) {
                     int selectedRow = playerTable.getSelectedRow();
-                    player = new Player(
-                            String.valueOf(playerTable.getValueAt(selectedRow, 1)),
-                            String.valueOf(playerTable.getValueAt(selectedRow, 2)),
-                            String.valueOf(playerTable.getValueAt(selectedRow, 3)),
-                            String.valueOf(playerTable.getValueAt(selectedRow, 4))
-                    );
+                    player = playerDAO.getPlayerByID((int) playerTable.getValueAt(selectedRow, 0));
                 }
 
-                new EditPlayer( player);
+                new EditPlayer(player);
             }
         });
         searchButton.addActionListener(new ActionListener() {
@@ -116,15 +111,13 @@ public class PlayerManagement extends JFrame {
 
     private void addData(ArrayList<Player> players) {
         // Thêm dữ liệu mẫu vào bảng
-        ImageIcon avatarIcon = new ImageIcon(new ImageIcon("C:\\Users\\phamn\\Downloads\\gamer.png")
-                .getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
-
         ArrayList<Object[]> data = new ArrayList<>();
         for (Player player : players) {
             data.add(new Object[] {player.getId(), player.getUsername(), player.getPassword(), player.getNickName(),
-                    avatarIcon, player.getWin(), player.getLose(), player.getDraw(), player.getScore()});
+                    new ImageIcon(new ImageIcon("src/assets/avatar/" + player.getAvatar() + ".png")
+                            .getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)),
+                    player.getWin(), player.getLose(), player.getDraw(), player.getScore()});
         }
-
 
         for (Object[] row : data) {
             tableModel.addRow(row);

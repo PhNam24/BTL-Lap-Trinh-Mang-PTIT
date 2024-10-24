@@ -41,8 +41,8 @@ public class EditPlayer extends JFrame {
 
         JLabel avatarLabelTitle = new JLabel("Avatar:");
         avatarLabel = new JLabel();
-        avatarLabel.setPreferredSize(new Dimension(100, 100));
-        avatarLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        avatarLabel.setIcon(new ImageIcon(new ImageIcon("src/assets/avatar/" + player.getAvatar() + ".png" )
+                .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 
         // Nút để chọn Avatar từ hệ thống
         selectAvatarButton = new JButton("Chọn ảnh...");
@@ -73,12 +73,7 @@ public class EditPlayer extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playerDAO.deletePlayer(new Player(
-                        usernameField.getText(),
-                        passwordField.getText(),
-                        nicknameField.getText(),
-                        avatarPath
-                ));
+                playerDAO.deletePlayer(player);
                 showMessage("Xoá người chơi thành công!!! ");
             }
         });

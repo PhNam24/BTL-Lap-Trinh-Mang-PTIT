@@ -110,6 +110,7 @@ public class ClientHandler extends Thread {
                 if (messageSplit[0].equals("update")) {
                     System.out.println(message);
                     Client.player = getPlayerFromString(1, messageSplit);
+                    Client.mainLobbyForm.setPlayerInformation();
                 }
 
                 //Xử lý bảng xếp hạng
@@ -212,7 +213,7 @@ public class ClientHandler extends Thread {
                     Client.inGameForm.stopTimer();
                     Client.closeAllViews();
                     Client.openView(Client.View.GAME_NOTICE, "Đối thủ đã thoát khỏi phòng", "Đang trở về trang chủ");
-                    Thread.sleep(3000);
+                    Thread.sleep(1500);
                     Client.closeAllViews();
                     Client.openView(Client.View.HOMEPAGE);
                 }
@@ -229,6 +230,11 @@ public class ClientHandler extends Thread {
                     Client.inGameForm.stopAllThread();
                     JOptionPane.showMessageDialog(Client.inGameForm,"Bạn là người chiến thắng! Gáy to lên!\nGiá của " + Client.inGameForm.product.getAmount()
                             + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    try {
+                        write("update,");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     Client.closeView(Client.View.GAME_CLIENT);
                     Client.openView(Client.View.HOMEPAGE);
                 }
@@ -238,6 +244,11 @@ public class ClientHandler extends Thread {
                     Client.inGameForm.stopAllThread();
                     JOptionPane.showMessageDialog(Client.inGameForm,"Gà lắm hehehe! Bạn thua mất rồi!\nGiá của " + Client.inGameForm.product.getAmount()
                             + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    try {
+                        write("update,");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     Client.closeView(Client.View.GAME_CLIENT);
                     Client.openView(Client.View.HOMEPAGE);
                 }
@@ -247,6 +258,11 @@ public class ClientHandler extends Thread {
                     Client.inGameForm.stopAllThread();
                     JOptionPane.showMessageDialog(Client.inGameForm,"Thật tuyệt vời! Hai bạn ngang sức ngang tài!\nGiá của " + Client.inGameForm.product.getAmount()
                            + " " + Client.inGameForm.product.getName() + " là: " + Client.inGameForm.product.getPrice() + "vnđ");
+                    try {
+                        write("update,");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     Client.closeView(Client.View.GAME_CLIENT);
                     Client.openView(Client.View.HOMEPAGE);
                 }

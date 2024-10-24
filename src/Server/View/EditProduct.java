@@ -40,8 +40,9 @@ public class EditProduct extends JFrame {
 
         JLabel imageLabelTitle = new JLabel("Hình ảnh:");
         imageLabel = new JLabel();
-        imageLabel.setPreferredSize(new Dimension(100, 100));
-        imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        imageLabel.setIcon(new ImageIcon(new ImageIcon("src/assets/product/" + product.getPicture() + ".jpg" )
+                .getImage().getScaledInstance(240, 180, Image.SCALE_SMOOTH)));
+        System.out.println(product.getPicture());
 
         // Button to select image
         selectImageButton = new JButton("Chọn hình ảnh...");
@@ -73,13 +74,7 @@ public class EditProduct extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                productDAO.deleteProduct(new Product(
-                        product.getId(),
-                        nameField.getText(),
-                        priceField.getText(),
-                        Double.parseDouble(quantityField.getText()),
-                        imagePath
-                ));
+                productDAO.deleteProduct(product);
                 showMessage("Xoá sản phẩm thành công!");
             }
         });

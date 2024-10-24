@@ -7,6 +7,8 @@ import Server.Controller.ServerThread;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Admin extends JFrame implements Runnable {
 
@@ -96,18 +98,23 @@ public class Admin extends JFrame implements Runnable {
 
     private void viewRoomsButtonActionPerformed(ActionEvent actionEvent) {
         StringBuilder res = new StringBuilder();
+        Set<Integer> roomIDSet = new HashSet<Integer>();
         int i = 1;
         for (ServerThread serverThread : Server.serverThreadBus.getListServerThreads()) {
             Room room1 = serverThread.getRoom();
             String listUser = "List user ID: ";
             if (room1 != null) {
-                if (room1.getNumberOfPlayer() == 1) {
-                    listUser += room1.getPlayer1().getPlayer().getId();
-                } else {
-                    listUser += room1.getPlayer1().getPlayer().getId() + ", " + room1.getPlayer2().getPlayer().getId();
+                if (!roomIDSet.contains(room1.getId())) {
+                    if (room1.getNumberOfPlayer() == 1) {
+                        listUser += room1.getPlayer1().getPlayer().getId();
+                    } else {
+                        listUser += room1.getPlayer1().getPlayer().getId() + ", " + room1.getPlayer2().getPlayer().getId();
+                    }
+                    res.append(i).append(". Room_ID: ").append(room1.getId()).append(", Number of player: ").append(room1.getNumberOfPlayer()).append(", ").append(listUser).append("\n");
+                    i++;
+                    roomIDSet.add(room1.getId());
+                    System.out.println(roomIDSet);
                 }
-                res.append(i).append(". Room_ID: ").append(room1.getId()).append(", Number of player: ").append(room1.getNumberOfPlayer()).append(", ").append(listUser).append("\n");
-                i++;
             }
 
         }

@@ -456,7 +456,9 @@ public class InGameForm extends javax.swing.JFrame {
     public void setProduct(Product product) {
         this.product = product;
         txtProductName.setText(product.getName());
+        txtProductName.setEditable(false);
         txtProductUnit.setText(product.getAmount());
+        txtProductUnit.setEditable(false);
         ImageIcon pic = new ImageIcon("src/assets/product/" + product.getPicture() + ".jpg" );
         lblProductPicture.setIcon(new ImageIcon(pic.getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
     }
@@ -470,6 +472,7 @@ public class InGameForm extends javax.swing.JFrame {
         Client.clientHandler.write("guess-price" + "," + Client.player.getId() + "," + price);
         txtPlayer1Input.setText("Đã đoán: " + price + "vnđ");
         txtPlayer1Input.setEditable(false);
+        btnPlayer1Submit.setEnabled(false);
         isGuess = true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,7 +24,7 @@ public class MainLobbyForm extends javax.swing.JFrame {
     public MainLobbyForm() {
         initComponents();
         this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
-        ImageIcon avt = new ImageIcon("src/assets/avatar/" + Client.player.getAvatar() + ".jpg");
+        ImageIcon avt = new ImageIcon("src/assets/avatar/" + Client.player.getAvatar() + ".png");
         lblAvatar.setIcon(new ImageIcon(avt.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH)));
         setLocationRelativeTo(null);
     }
@@ -372,6 +372,12 @@ public class MainLobbyForm extends javax.swing.JFrame {
         });
     }
 
+    public void setPlayerInformation() {
+        txtWinRate.setText(Client.player.getWinRate());
+        txtScore.setText(String.valueOf(Client.player.getScore()));
+        txtTotalGame.setText(String.valueOf(Client.player.getNumberOfGame()));
+    }
+
     private void sendMessage() {
         try {
             if (txtMyChat.getText().isEmpty()) {
@@ -395,7 +401,6 @@ public class MainLobbyForm extends javax.swing.JFrame {
         txtaAllChat.setText(temp);
         txtaAllChat.setCaretPosition(txtaAllChat.getDocument().getLength());
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateNewRoom;

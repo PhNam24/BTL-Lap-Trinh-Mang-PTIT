@@ -99,14 +99,26 @@ public class PlayerDAO extends DAO {
     }
 
     // Lấy nickname theo id
-    public String getPlayerNickNameByID(int id) {
+    public Player getPlayerByID(int id) {
         try {
-            String query = "SELECT player.nickName FROM player WHERE id = ?";
+            String query = "SELECT * FROM player WHERE id = ?";
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                return rs.getString(1);
+                return new Player(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getDouble(9),
+                        (rs.getInt(10) != 0),
+                        (rs.getInt(11) != 0)
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();

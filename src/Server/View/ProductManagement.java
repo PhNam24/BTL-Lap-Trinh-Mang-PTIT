@@ -54,7 +54,7 @@ public class ProductManagement extends JFrame {
             }
         };
         productTable = new JTable(tableModel);
-        productTable.setRowHeight(50); // For better image display
+        productTable.setRowHeight(100); // For better image display
         JScrollPane tableScrollPane = new JScrollPane(productTable);
         add(tableScrollPane, BorderLayout.CENTER);
 
@@ -73,13 +73,7 @@ public class ProductManagement extends JFrame {
                 if (e.getClickCount() == 1) {
                     Product product = null;
                     int selectedRow = productTable.getSelectedRow();
-                    product = new Product(
-                            String.valueOf(productTable.getValueAt(selectedRow, 1)),
-                            String.valueOf(productTable.getValueAt(selectedRow, 2)),
-                            Double.parseDouble(String.valueOf(productTable.getValueAt(selectedRow, 3))),
-                            String.valueOf(productTable.getValueAt(selectedRow, 4))
-                    );
-                    product.setId(Integer.parseInt(String.valueOf(productTable.getValueAt(selectedRow, 0))));
+                    product = productDAO.getProductByID((int)productTable.getValueAt(selectedRow, 0));
                     new EditProduct(product);
                 }
             }
@@ -103,12 +97,11 @@ public class ProductManagement extends JFrame {
     }
 
     private void addData(ArrayList<Product> products) {
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Users\\phamn\\Downloads\\gamer.png")
-                .getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
-
         for (Product product : products) {
             tableModel.addRow(new Object[]{
-                    product.getId(), product.getName(), product.getAmount(), product.getPrice(), imageIcon
+                    product.getId(), product.getName(), product.getAmount(), product.getPrice(),
+                    new ImageIcon(new ImageIcon("src/assets/product/" + product.getPicture() + ".jpg" )
+                    .getImage().getScaledInstance(120, 90, Image.SCALE_SMOOTH))
             });
         }
     }

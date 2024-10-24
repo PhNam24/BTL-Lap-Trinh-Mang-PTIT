@@ -114,7 +114,7 @@ public class ServerThread extends Thread {
 
                 // update
                 if (messageSplit[0].equals("update")) {
-                    write("update," + getStringFromPlayer(player));
+                    write("update," + getStringFromPlayer(playerDAO.getPlayerByID(player.getId())));
                 }
 
                 //Xử lý lấy danh sách bảng xếp hạng

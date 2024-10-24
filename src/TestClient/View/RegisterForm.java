@@ -21,7 +21,7 @@ public class RegisterForm extends JFrame {
         this.setIconImage(new ImageIcon("src/assets/icon/avt.png").getImage());
         cbxAvatar.setMaximumRowCount(5);
         for (int i = 0; i <= 5; i++) {
-            cbxAvatar.addItem(new ImageIcon("src/assets/avatar/" + i + ".jpg"));
+            cbxAvatar.addItem(new ImageIcon("src/assets/avatar/" + i + ".png"));
         }
         setSize(400, 400);
     }
